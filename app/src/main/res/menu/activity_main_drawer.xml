@@ -1,36 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/meu_perfil"
+        android:icon="@drawable/ic_person"
+        android:title="Meu Perfil" />
+    <item
+        android:id="@+id/minhas_perguntas"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="Minhas Perguntas" />
+    <item
+        android:id="@+id/ultimas_perguntas"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Últimas Perguntas" />
+    <item
+        android:id="@+id/busca_avancada"
+        android:icon="@drawable/ic_search"
+        android:title="Busca Avançada" />
+    <item
+        android:id="@+id/sair"
+        android:icon="@drawable/ic_exit"
+        android:title="Sair" />
 </menu>
