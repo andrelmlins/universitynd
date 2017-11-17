@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="publique_duvida">Publique sua Dúvida</string>
+    <string name="ultimas_duvidas">Últimas Dúvidas</string>
+    <string name="busca_avancada">Busca Avançada</string>
+    <string name="meu_perfil">Meu Perfil</string>
 </resources>
