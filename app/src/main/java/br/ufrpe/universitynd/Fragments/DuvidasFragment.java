@@ -19,7 +19,7 @@ import br.ufrpe.universitynd.models.Duvida;
  * Created by AndreLucas on 24/11/2017.
  */
 
-class DuvidasFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class DuvidasFragment extends Fragment implements AdapterView.OnItemClickListener {
     private View rootView;
     private ListView listView;
     private AdapterDuvidas adapter;

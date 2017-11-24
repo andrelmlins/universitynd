@@ -1,49 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:padding="16dp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:padding="16dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/DuvidaNome"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome" />
+            <TextView
+                android:id="@+id/DuvidaData"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:text="10/12/17" />
+        </LinearLayout>
         <TextView
-            android:id="@+id/DuvidaNome"
-            android:layout_weight="1"
+            android:id="@+id/DuvidaDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome" />
-        <TextView
-            android:id="@+id/DuvidaData"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="Minha duvida é sobre dispensa de disciplina.." />
+        <Button
+            android:id="@+id/btnShowResposta"
+            android:layout_width="144dp"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:text="10/12/17" />
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="Responder" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/llResposta"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtResposta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite a sua resposta"
+                android:inputType="textMultiLine" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btnEnviar"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="Enviar" />
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="Cancelar" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
-    <TextView
-        android:id="@+id/DuvidaDescricao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Minha duvida é sobre dispensa de disciplina.." />
-
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_height="286dp"
-        android:text="Responda Aquiii!!!" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:text="Responder" />
-
-</LinearLayout>
-
-
+</ScrollView>

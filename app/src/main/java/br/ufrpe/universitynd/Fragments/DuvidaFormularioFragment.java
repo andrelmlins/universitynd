@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import br.ufrpe.universitynd.R;
 
@@ -13,8 +14,9 @@ import br.ufrpe.universitynd.R;
  * Created by AndreLucas on 24/11/2017.
  */
 
-class DuvidaFormularioFragment extends Fragment {
+public class DuvidaFormularioFragment extends Fragment {
     private View rootView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
