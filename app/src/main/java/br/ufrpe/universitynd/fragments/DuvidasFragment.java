@@ -1,4 +1,4 @@
-package br.ufrpe.universitynd.Fragments;
+package br.ufrpe.universitynd.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.universitynd.Adapters.AdapterDuvidas;
+import br.ufrpe.universitynd.adapters.AdapterDuvidas;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
 

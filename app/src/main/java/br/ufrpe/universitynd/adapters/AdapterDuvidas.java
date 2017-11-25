@@ -1,7 +1,6 @@
-package br.ufrpe.universitynd.Adapters;
+package br.ufrpe.universitynd.adapters;
 
 import android.app.Activity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
