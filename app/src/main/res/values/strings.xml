@@ -16,4 +16,19 @@
     <string name="usuario">Usuário</string>
     <string name="senha">Senha</string>
     <string name="acessoAva">Login com o AVA</string>
+    <string name="selecionar_categoria">Selecione uma Categoria:</string>
+    <string name="selecionar_tipo">Selecione um Tipo de Usuário:</string>
+    <string name="bucar">Buscar</string>
+    <string name="prompt">Selecione</string>
+    <string-array name="Categorias">
+        <item>Dispensa de Disciplina</item>
+        <item>Estágio</item>
+        <item>Matrícula</item>
+    </string-array>
+    <string-array name="TipoUsuario">
+        <item>Aluno</item>
+        <item>Coordenação</item>
+        <item>Professor</item>
+        <item>Secretaria</item>
+    </string-array>
 </resources>
