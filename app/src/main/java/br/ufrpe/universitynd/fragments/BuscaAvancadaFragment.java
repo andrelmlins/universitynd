@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import br.ufrpe.universitynd.R;
 
@@ -16,10 +18,24 @@ import br.ufrpe.universitynd.R;
 
 public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnItemSelectedListener{
     private View rootView;
+    private Button btnBuscar;
+    Spinner prompt;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState) {
         this.rootView = inflater.inflate(R.layout.busca_avancada_fragment, container, false);
         getActivity().setTitle("Busca Avançada");
+
+        this.prompt = (Spinner) this.rootView.findViewById(R.id.spinner1);
+
+        this.btnBuscar = (Button) this.rootView.findViewById(R.id.btnBuscar);
+
+
+        this.btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return this.rootView;
     }
 
