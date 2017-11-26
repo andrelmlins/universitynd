@@ -16,6 +16,7 @@ import br.ufrpe.universitynd.R;
 public class HomeFragment extends Fragment implements View.OnClickListener{
     private CardView publique_duvida;
     private CardView ultimas_duvidas;
+    private CardView busca_avancada;
     private View rootView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         getActivity().setTitle("UniversityNd");
         this.publique_duvida = (CardView) this.rootView.findViewById(R.id.publique_duvida);
         this.ultimas_duvidas = (CardView) this.rootView.findViewById(R.id.ultimas_duvidas);
+        this.busca_avancada = (CardView) this.rootView.findViewById(R.id.busca_avancada);
+        this.busca_avancada.setOnClickListener(this);
         this.publique_duvida.setOnClickListener(this);
         this.ultimas_duvidas.setOnClickListener(this);
         return this.rootView;
@@ -39,6 +42,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidaFormularioFragment()).addToBackStack("").commit();
         } else if(v.getId()==R.id.ultimas_duvidas){
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidasFragment()).addToBackStack("").commit();
+        }else if (v.getId() == R.id.busca_avancada){
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new BuscaAvancadaFragment()).addToBackStack("").commit();
         }
     }
 }

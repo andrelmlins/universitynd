@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">UniversityNd</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="publique_duvida">Post your question</string>
+    <string name="ultimas_duvidas">Last Doubts</string>
+    <string name="busca_avancada">Advanced Search</string>
+    <string name="meu_perfil">My Profile</string>
+
+    <string name="responder">Answer</string>
+    <string name="suaResposta">Enter your answer</string>
+    <string name="enviar">Submit</string>
+    <string name="cancelar">Cancel</string>
+
+    <string name="textoLogin">You must be logged in with your Ava account.</string>
+    <string name="usuario">User</string>
+    <string name="senha">Password</string>
+    <string name="acessoAva">Login with AVA</string>
+
+    <string name="selecionar_categoria">Select a Category:</string>
+    <string name="selecionar_tipo">Select a User Type:</string>
+    <string name="bucar">Search</string>
+    <string name="prompt">Select</string>
+    <string-array name="Categorias">
+        <item>Exemption from Discipline</item>
+        <item>Intership</item>
+        <item>Registration</item>
+    </string-array>
+    <string-array name="TipoUsuario">
+        <item>Student</item>
+        <item>Department</item>
+        <item>Professor</item>
+        <item>Secretariat</item>
+    </string-array>
+
+</resources>
