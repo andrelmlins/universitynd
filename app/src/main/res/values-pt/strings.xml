@@ -24,11 +24,165 @@
         <item>Dispensa de Disciplina</item>
         <item>Estágio</item>
         <item>Matrícula</item>
+        <item>SECOMP</item>
+        <item>Disciplina</item>
     </string-array>
     <string-array name="TipoUsuario">
         <item>Aluno</item>
         <item>Coordenação</item>
         <item>Professor</item>
-        <item>Secretaria</item>
+        <item>Secretária</item>
+    </string-array>
+
+    <string-array name="Interessados">
+        <item>Todos</item>
+        <item>Aluno</item>
+        <item>Coordenação</item>
+        <item>Professor</item>
+        <item>Secretária</item>
+    </string-array>
+
+    <string-array name='Disciplinas'>
+        <item>ÁLGEBRA VETORIAL E LINEAR PARA COMPUTAÇÃO</item>
+        <item>ÁLGEBRA VETORIAL E LINEAR PARA COMPUTAÇÃO</item>
+        <item>ALGORITMOS E ESTRUTURAS DE DADOS</item>
+        <item>ALGORITMOS EM GRAFOS</item>
+        <item>ALGORITMOS NUMÉRICOS</item>
+        <item>ALGORITMOS PARA BIOINFORMÁTICA E BIOLOGIA COMPUTACIONAL</item>
+        <item>ALGORITMOS PARA BUSCA DE PADRÕES EM SEQUÊNCIAS</item>
+        <item>ALGORITMOS SOBRE TEXTOS</item>
+        <item>ANÁLISE DE DESEMPENHO</item>
+        <item>ANÁLISE E PROJETO DE SISTEMAS ORIENTADOS A ASPECTOS</item>
+        <item>ANÁLISE E PROJETO DE SISTEMAS ORIENTADOS A OBJETOS</item>
+        <item>ARQUITETURA E ORGANIZAÇÃO DE COMPUTADORES</item>
+        <item>ARQUITETURAS AVANÇADAS DE COMPUTADORES</item>
+        <item>ARQUITETURAS ORIENTADAS A SERVIÇOS</item>
+        <item>ASPECTOS COGNITIVOS NO DESENVOLVIMENTO DE SOFTWARE</item>
+        <item>AUTÔMATOS JOGOS E LÓGICA</item>
+        <item>AVALIAÇÃO DE DESEMPENHO DE REDES</item>
+        <item>BANCO DE DADOS NÃO-CONVENCIONAIS</item>
+        <item>BANCO DE DADOS S</item>
+        <item>BIOINFORMÁTICA</item>
+        <item>BIOLOGIA COMPUTACIONAL</item>
+        <item>CÁLCULO NI</item>
+        <item>CÁLCULO NII</item>
+        <item>CIRCUITOS DIGITAIS</item>
+        <item>CIRCUITOS INTEGRADOS</item>
+        <item>COMPILADORES</item>
+        <item>COMPUTAÇÃO DE ALTO DESEMPENHO</item>
+        <item>COMPUTAÇÃO E EMPREENDEDORISMO</item>
+        <item>COMPUTAÇÃO EM NUVEM</item>
+        <item>COMPUTAÇÃO GRÁFICA BÁSICA</item>
+        <item>COMPUTAÇÃO QUÂNTICA</item>
+        <item>COMPUTADORES E SOCIEDADE</item>
+        <item>CRIPTOGRAFIA</item>
+        <item>DESAFIOS DE PROGRAMAÇÃO</item>
+        <item>DESENVOLVIMENTO DE APLICAÇÕES MÓVEIS</item>
+        <item>DESENVOLVIMENTO DE APLICAÇÕES MÓVEIS</item>
+        <item>DESENVOLVIMENTO DE APLICAÇÕES PARA WEB</item>
+        <item>DIREITO E LEGISLAÇÃO PARA INFORMÁTICA</item>
+        <item>EDUCAÇÃO À DISTÂNCIA</item>
+        <item>EDUCAÇÃO DAS RELAÇÕES ÉTNICO-RACIAIS</item>
+        <item>EDUCAÇÃO FÍSICA</item>
+        <item>EMPREENDEDORISMO A</item>
+        <item>ENGENHARIA DE REQUISITOS</item>
+        <item>ENGENHARIA DE SOFTWARE</item>
+        <item>ENGENHARIA DE SOFTWARE EXPERIMENTAL</item>
+        <item>ESTÁGIO SUPERVISIONADO OBRIGATÓRIO I - BACH COMPUTAÇÃO</item>
+        <item>ESTÁGIO SUPERVISIONADO OBRIGATÓRIO II - BACH COMPUTAÇÃO</item>
+        <item>ESTATÍSTICA EXPLORATÓRIA I</item>
+        <item>ESTRUTURAS ALGÉBRICAS PARA COMPUTAÇÃO</item>
+        <item>FÍSICA APLICADA À COMPUTAÇÃO</item>
+        <item>GEOMETRIA COMPUTACIONAL</item>
+        <item>GERÊNCIA DE PROJETOS</item>
+        <item>GERENCIAMENTO DE REDES</item>
+        <item>GESTÃO DA INFORMAÇÃO E DO CONHECIMENTO</item>
+        <item>GESTÃO DE PROCESSOS DE NEGÓCIOS</item>
+        <item>GOVERNANÇA DE TI</item>
+        <item>INFORMAÇÃO QUÂNTICA</item>
+        <item>INFORMÁTICA NA EDUCAÇÃO</item>
+        <item>INOVAÇÃO EM PROJETOS DE SOFTWARE</item>
+        <item>INTELIGÊNCIA ARTIFICIAL</item>
+        <item>INTERAÇÃO HOMEM MÁQUINA</item>
+        <item>INTERNET DO FUTURO</item>
+        <item>INTRODUÇÃO A CIÊNCIA DA COMPUTAÇÃO</item>
+        <item>INTRODUÇÃO À COMPUTAÇÃO EVOLUTIVA</item>
+        <item>INTRODUÇÃO A COMPUTAÇÃO QUÂNTICA</item>
+        <item>INTRODUÇÃO À PROGRAMAÇÃO I</item>
+        <item>INTRODUÇÃO À PROGRAMAÇÃO II</item>
+        <item>INTRODUÇÃO À TEORIA DA COMPUTAÇÃO</item>
+        <item>INTRODUÇÃO A TEORIA DAS CATEGORIAS</item>
+        <item>JOGOS DIGITAIS</item>
+        <item>LÍNGUA BRASILEIRA DE SINAIS - LIBRAS</item>
+        <item>MATEMÁTICA DISCRETA I</item>
+        <item>MATEMÁTICA DISCRETA II</item>
+        <item>METODOLOGIA CIENTÍFICA APLICADA À COMPUTAÇÃO</item>
+        <item>METODOLOGIAS ÁGEIS DE DESENVOLVIMENTO DE SOFTWARE</item>
+        <item>MÉTODOS FORMAIS</item>
+        <item>MODELAGEM COMPUTACIONAL</item>
+        <item>OPTATIVA 1</item>
+        <item>OPTATIVA 11</item>
+        <item>OPTATIVA 12</item>
+        <item>OPTATIVA 13</item>
+        <item>OPTATIVA 14</item>
+        <item>OPTATIVA 15</item>
+        <item>OPTATIVA 16</item>
+        <item>OPTATIVA 17</item>
+        <item>OPTATIVA 18</item>
+        <item>OPTATIVA 2</item>
+        <item>PARADIGMAS DE PROGRAMAÇÃO</item>
+        <item>PLATAFORMAS DE DISTRIBUIÇÃO</item>
+        <item>PROGRAMAÇÃO CONCORRENTE</item>
+        <item>PROGRAMAÇÃO EM LINGUAGENS HÍBRIDAS</item>
+        <item>PROGRAMAÇÃO FUNCIONAL</item>
+        <item>PROGRAMAÇÃO LINEAR</item>
+        <item>PROGRAMAÇÃO ORIENTADA A ASPECTOS</item>
+        <item>PROJETO DE COMPILADORES</item>
+        <item>PROJETO DE CONCLUSÃO DE CURSO</item>
+        <item>PROJETO DE DESENVOLVIMENTO DE SOFTWARE</item>
+        <item>PROJETO DE SISTEMAS EMBARCADOS</item>
+        <item>PROJETO E ANÁLISE DE ALGORITMOS</item>
+        <item>PROJETO E IMPLEMENTAÇÃO DE SISTEMAS DISTRIBUÍDOS</item>
+        <item>QUALIDADE DE SOFTWARE</item>
+        <item>REALIDADE VIRTUAL E MISTA</item>
+        <item>RECONHECIMENTO DE PADRÕES</item>
+        <item>REDES DE COMPUTADORES</item>
+        <item>REDES DE COMPUTADORES SEM FIO</item>
+        <item>REDES NEURAIS</item>
+        <item>SEGURANÇA DA INFORMAÇÃO</item>
+        <item>SEMÂNTICA DE LINGUAGENS DE PROGRAMAÇÃO</item>
+        <item>SIMULAÇÃO DE SISTEMAS</item>
+        <item>SISTEMAS DE INFORMAÇÃO</item>
+        <item>SISTEMAS DISTRIBUÍDOS</item>
+        <item>SISTEMAS ESPECIALISTAS</item>
+        <item>SISTEMAS OPERACIONAIS</item>
+        <item>SISTEMAS UNIX</item>
+        <item>SOFTWARE EDUCACIONAL</item>
+        <item>TEORIA DA COMPLEXIDADE</item>
+        <item>TEORIA DA COMPUTABILIDADE</item>
+        <item>TEORIA DA COMPUTAÇÃO</item>
+        <item>TEORIA DAS FILAS</item>
+        <item>TEORIA DOS GRAFOS</item>
+        <item>TESTE DE SOFTWARE</item>
+        <item>TÓPICOS AVANÇADOS EM ANÁLISE DE DESEMPENHO</item>
+        <item>TÓPICOS AVANÇADOS EM ARQUITETURAS DE COMPUTADORES</item>
+        <item>TÓPICOS AVANÇADOS EM BANCO DE DADOS</item>
+        <item>TÓPICOS AVANÇADOS EM BIOLOGIA COMPUTACIONAL</item>
+        <item>TÓPICOS AVANÇADOS EM EDUCAÇÃO À DISTÂNCIA</item>
+        <item>TÓPICOS AVANÇADOS EM ENGENHARIA DE SOFTWARE</item>
+        <item>TÓPICOS AVANÇADOS EM INTELIGÊNCIA ARTIFICIAL</item>
+        <item>TÓPICOS AVANÇADOS EM PROGRAMAÇÃO</item>
+        <item>TÓPICOS AVANÇADOS EM REALIDADE VIRTUAL</item>
+        <item>TÓPICOS AVANÇADOS EM REDES DE COMPUTADORES I</item>
+        <item>TÓPICOS AVANÇADOS EM REDES DE COMPUTADORES II</item>
+        <item>TÓPICOS AVANÇADOS EM SISTEMAS DISTRIBUÍDOS I</item>
+        <item>TÓPICOS AVANÇADOS EM SISTEMAS DISTRIBUÍDOS II</item>
+        <item>TÓPICOS AVANÇADOS EM SISTEMAS OPERACIONAIS</item>
+        <item>TÓPICOS AVANÇADOS EM TEORIA DA COMPUTAÇÃO</item>
+        <item>TÓPICOS EM COMBINATÓRIA</item>
+        <item>TORIA DOS AUTÔMATOS</item>
+        <item>TRABALHO DE CONCLUSÃO DE CURSO</item>
+        <item>VISÃO COMPUTACIONAL</item>
+        <item>WEB SERVICES</item>
     </string-array>
 </resources>

@@ -33,7 +33,7 @@ public class DuvidaFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
 
-        this.rootView = inflater.inflate(R.layout.duvidas_form_fragment,container,false);
+        this.rootView = inflater.inflate(R.layout.duvida_fragment,container,false);
 
         this.duvida = (Duvida) this.getArguments().get("duvida");
         this.btnResponder = (Button) this.rootView.findViewById(R.id.btnShowResposta);

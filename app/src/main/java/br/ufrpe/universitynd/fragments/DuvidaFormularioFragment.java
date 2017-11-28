@@ -22,7 +22,7 @@ public class DuvidaFormularioFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
-        this.rootView = inflater.inflate(R.layout.duvidas_form_fragment,container,false);
+        this.rootView = inflater.inflate(R.layout.duvida_form_fragment,container,false);
         getActivity().setTitle("Diga sua dúvida");
         return this.rootView;
     }
