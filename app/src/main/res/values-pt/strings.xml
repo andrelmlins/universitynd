@@ -20,6 +20,8 @@
     <string name="selecionar_tipo">Selecione um Tipo de Usuário:</string>
     <string name="bucar">Buscar</string>
     <string name="prompt">Selecione</string>
+    <string name="limpar">Limpar</string>
+
     <string-array name="Categorias">
         <item>Dispensa de Disciplina</item>
         <item>Estágio</item>

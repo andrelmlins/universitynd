@@ -24,6 +24,8 @@
     <string name="selecionar_tipo">Select a User Type:</string>
     <string name="bucar">Search</string>
     <string name="prompt">Select</string>
+    <string name="limpar">Clear</string>
+
     <string-array name="Categorias">
         <item>Exemption from Discipline</item>
         <item>Intership</item>
