@@ -25,6 +25,9 @@
     <string name="bucar">Search</string>
     <string name="prompt">Select</string>
     <string name="limpar">Clear</string>
+    <string name="ultDuvias">Last Questions</string>
+    <string name="dizDuviva">Tell Us Your Doubts</string>
+    <string name="perfil">My Profile</string>
 
     <string-array name="Categorias">
         <item>Exemption from Discipline</item>

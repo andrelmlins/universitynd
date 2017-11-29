@@ -52,7 +52,7 @@ public class DuvidaFormularioFragment extends Fragment implements View.OnClickLi
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvida_form_fragment,container,false);
-        getActivity().setTitle("Diga sua dúvida");
+        getActivity().setTitle(R.string.dizDuviva);
         this.requests = Requests.getInstance(getActivity());
 
         enviar = (Button) this.rootView.findViewById(R.id.enviar);

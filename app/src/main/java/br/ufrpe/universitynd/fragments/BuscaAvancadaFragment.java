@@ -31,7 +31,7 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState) {
         this.rootView = inflater.inflate(R.layout.busca_avancada_fragment, container, false);
-        getActivity().setTitle("Busca Avançada");
+        getActivity().setTitle(R.string.busca_avancada);
 
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.lista);
 
@@ -62,6 +62,11 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
         return this.rootView;
     }
 
+    @Override
+    public  void  onSaveInstanceState(final  Bundle outState){
+        super.onSaveInstanceState(outState);
+        //outState.putSerializable();
+    }
 
 
     @Override
