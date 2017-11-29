@@ -22,7 +22,7 @@ import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
 
 /**
- * Created by AndreLucas on 24/11/2017.
+ * Created by Danielly Queiroz on 24/11/2017.
  */
 
 public class DuvidasFragment extends Fragment implements RecyclerViewOnClickListenerHack {

@@ -30,7 +30,7 @@ import br.ufrpe.universitynd.utils.MultiSpinner;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
- * Created by AndreLucas on 24/11/2017.
+ * Created by Danielly Queiroz on 24/11/2017.
  */
 
 public class DuvidaFormularioFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, Response.ErrorListener, Response.Listener<JSONObject> {

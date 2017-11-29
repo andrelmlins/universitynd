@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 /**
- * Created by air on 22/11/17.
+ * Created by Danielly Queiroz on 22/11/17.
  */
 
 public class Duvida implements Serializable {
