@@ -11,22 +11,24 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="" />
         <TextView
             android:id="@+id/DuvidaData"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="textEnd"
-            android:text="TextView" />
+            android:text="" />
     </LinearLayout>
     <TextView
         android:id="@+id/DuvidaDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:text="" />
 
-
+"
 
 </LinearLayout>
