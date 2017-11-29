@@ -1,6 +1,7 @@
 package br.ufrpe.universitynd;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import br.ufrpe.universitynd.fragments.HomeFragment;
 
@@ -21,8 +28,6 @@ public class Main extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent it = getIntent();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,6 +40,14 @@ public class Main extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        CircularImageView user_image = (CircularImageView) header.findViewById(R.id.user_image);
+        TextView user_name = (TextView) header.findViewById(R.id.user_name);
+        TextView user_email = (TextView) header.findViewById(R.id.user_email);
+        SharedPreferences preferences = getSharedPreferences("usuario",0);
+        Picasso.with(this).load(preferences.getString("picture","")).into(user_image);
+        user_name.setText(preferences.getString("fullname", ""));
+        user_email.setText(preferences.getString("email",""));
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.content_fragment, new HomeFragment()).commit();
@@ -80,6 +93,12 @@ public class Main extends AppCompatActivity
 
         if (id == R.id.home) {
             fm.beginTransaction().replace(R.id.content_fragment, new HomeFragment()).addToBackStack("").commit();
+        } else if(id == R.id.sair) {
+            SharedPreferences preferences = getSharedPreferences("usuario", 0);
+            preferences.edit().clear().commit();
+            Intent i = new Intent(Main.this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
