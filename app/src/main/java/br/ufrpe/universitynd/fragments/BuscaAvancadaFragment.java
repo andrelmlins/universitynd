@@ -37,9 +37,9 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
         this.duvidas = new ArrayList<Duvida>();
         duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));
 
-        this.adapter = new AdapterDuvidas(duvidas, getActivity(),);
-        this.listView.setAdapter(this.adapter);
-        this.listView.setOnItemClickListener(this);
+//        this.adapter = new AdapterDuvidas(duvidas, getActivity(),);
+//        this.listView.setAdapter(this.adapter);
+//        this.listView.setOnItemClickListener(this);
 
 
         this.btnBuscar = (Button) this.rootView.findViewById(R.id.btnBuscar);
