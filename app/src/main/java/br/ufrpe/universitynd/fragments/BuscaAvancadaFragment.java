@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.ufrpe.universitynd.R;
@@ -34,10 +35,10 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
         this.listView = (ListView) this.rootView.findViewById(R.id.lista);
 
         this.duvidas = new ArrayList<Duvida>();
-        duvidas.add(new Duvida("Pergunta 1"));
+        duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));
 
-        this.adapter = new AdapterDuvidas(duvidas, getActivity());
-        this.listView.setAdapter(adapter);
+        this.adapter = new AdapterDuvidas(duvidas, getActivity(),);
+        this.listView.setAdapter(this.adapter);
         this.listView.setOnItemClickListener(this);
 
 
