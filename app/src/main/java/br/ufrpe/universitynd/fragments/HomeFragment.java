@@ -18,6 +18,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private CardView ultimas_duvidas;
     private CardView busca_avancada;
     private View rootView;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         this.ultimas_duvidas.setOnClickListener(this);
         return this.rootView;
     }
+
 
     @Override
     public void onClick(View v) {

@@ -30,7 +30,7 @@ import br.ufrpe.universitynd.utils.MultiSpinner;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
- * Created by AndreLucas on 24/11/2017.
+ * Created by Danielly Queiroz on 24/11/2017.
  */
 
 public class DuvidaFormularioFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, Response.ErrorListener, Response.Listener<JSONObject> {
@@ -52,7 +52,7 @@ public class DuvidaFormularioFragment extends Fragment implements View.OnClickLi
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvida_form_fragment,container,false);
-        getActivity().setTitle("Diga sua dúvida");
+        getActivity().setTitle(R.string.dizDuviva);
         this.requests = Requests.getInstance(getActivity());
 
         enviar = (Button) this.rootView.findViewById(R.id.enviar);

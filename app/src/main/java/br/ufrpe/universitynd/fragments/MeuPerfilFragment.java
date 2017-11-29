@@ -29,7 +29,7 @@ public class MeuPerfilFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.perfil_fragment,container,false);
-        getActivity().setTitle("Meu Perfil");
+        getActivity().setTitle(R.string.perfil);
         return this.rootView;
     }
 }

@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
- * Created by air on 25/11/17.
+ * Created by Danielly Queiroz on 25/11/17.
  */
 
 public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener, OnClickListener{
