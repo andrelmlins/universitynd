@@ -42,7 +42,7 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.tvNome.setText(mDuvidas.get(position).getNome());
         holder.tvData.setText(mDuvidas.get(position).getDataFormatada(mDuvidas.get(position).getData()));
-        holder.tvDescricao.setText(mDuvidas.get(position).getTexto());
+        holder.tvDescricao.setText(mDuvidas.get(position).getConteudo());
 
     }
 

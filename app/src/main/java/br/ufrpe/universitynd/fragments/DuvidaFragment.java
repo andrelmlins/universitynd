@@ -70,8 +70,8 @@ public class DuvidaFragment extends Fragment {
         //Seta os valores da Duvida
         this.nome.setText(this.duvida.getNome());
         this.data.setText(this.duvida.getDataFormatada(this.duvida.getData()));
-        this.descricao.setText(this.duvida.getTexto());
-        getActivity().setTitle(this.duvida.getTexto());
+        this.descricao.setText(this.duvida.getConteudo());
+        getActivity().setTitle(this.duvida.getNome());
         return this.rootView;
     }
   

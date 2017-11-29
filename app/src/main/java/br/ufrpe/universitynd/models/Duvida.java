@@ -8,23 +8,32 @@ import java.util.Date;
  * Created by air on 22/11/17.
  */
 
-public class Duvida extends Date implements Serializable {
+public class Duvida implements Serializable {
     private String nome;
     private Date data;
-    private String texto;
-    private String titulo;
+    private String conteudo;
     private String interessado;
     private String[] disciplinas;
     private String assunto;
 
+    public Duvida(String nome, Date data, String conteudo, String interessado, String[] disciplinas, String assunto) {
+        this.nome = nome;
+        this.data = data;
+        this.conteudo = conteudo;
+        this.interessado = interessado;
+        this.disciplinas = disciplinas;
+        this.assunto = assunto;
+    }
+
     public Duvida(String nome, Date data, String texto){
         this.nome = nome;
         this.data = data;
-        this.texto =texto;
+        this.conteudo =conteudo;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+
+    public void setConteudo(String conteudo) {
+        this.conteudo= conteudo;
     }
 
     public String getNome() {
@@ -42,21 +51,13 @@ public class Duvida extends Date implements Serializable {
         return data;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getConteudo() {
+        return conteudo;
     }
     public String getDataFormatada(Date data){
         Date dataFormatada = data;
         return DateFormat.getInstance().format(dataFormatada);
 
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getInteressado() {
