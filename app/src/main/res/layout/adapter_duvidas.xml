@@ -1,51 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="12dp"
+        app:civ_shadow="false"
+        app:civ_border="false"
+        android:id="@+id/user_image_list"/>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/DuvidaNome"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="" />
-            <TextView
-                android:id="@+id/DuvidaData"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
-                android:text="" />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/DuvidaDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:text="" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center|bottom"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:divider="@android:color/transparent">
-        <View
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/DuvidaNome"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+                <TextView
+                    android:id="@+id/DuvidaData"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:text="" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/DuvidaDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:background="@color/grey"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center|bottom"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/line"
+            android:divider="@android:color/transparent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="bottom"
+                android:background="@color/grey"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

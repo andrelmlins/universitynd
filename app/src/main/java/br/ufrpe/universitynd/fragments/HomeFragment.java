@@ -3,6 +3,7 @@ package br.ufrpe.universitynd.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,10 +41,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         this.publique_duvida.setOnClickListener(this);
         this.ultimas_duvidas.setOnClickListener(this);
         this.meu_perfil.setOnClickListener(this);
-
         return this.rootView;
     }
-
 
     @Override
     public void onClick(View v) {
