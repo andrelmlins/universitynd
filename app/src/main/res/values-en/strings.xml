@@ -26,6 +26,7 @@
     <string name="ultDuvias">Last Questions</string>
     <string name="dizDuviva">Tell Us Your Doubts</string>
     <string name="perfil">My Profile</string>
+    <string name="assunto">Subject</string>
 
     <string-array name="Categorias">
         <item>Exemption from Discipline</item>

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
 
@@ -27,7 +28,9 @@ public class DuvidaFragment extends Fragment {
     private Button btnCancelar;
     private TextView nome;
     private TextView data;
+    private TextView assunto;
     private TextView descricao;
+    private TextView interessado;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,10 @@ public class DuvidaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
 
         this.rootView = inflater.inflate(R.layout.duvida_fragment,container,false);
-
         this.duvida = (Duvida) this.getArguments().get("duvida");
+
+        ((Main)getActivity()).setColor(this.duvida.getColor());
+
         this.btnResponder = (Button) this.rootView.findViewById(R.id.btnShowResposta);
         this.llResposta = (LinearLayout) this.rootView.findViewById(R.id.llResposta);
         this.edtResposta = (EditText) this.rootView.findViewById(R.id.edtResposta);
@@ -49,6 +54,8 @@ public class DuvidaFragment extends Fragment {
         this.nome = (TextView) this.rootView.findViewById(R.id.DuvidaNome);
         this.data = (TextView) this.rootView.findViewById(R.id.DuvidaData);
         this.descricao = (TextView) this.rootView.findViewById(R.id.DuvidaDescricao);
+        this.assunto = (TextView) this.rootView.findViewById(R.id.DuvidaAssunto);
+        this.interessado = (TextView) this.rootView.findViewById(R.id.DuvidaInteressado);
 
         // Mostra o formulario de Resposta
         this.btnResponder.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +78,8 @@ public class DuvidaFragment extends Fragment {
         this.nome.setText(this.duvida.getNome());
         this.data.setText(this.duvida.getDataFormatada(this.duvida.getData()));
         this.descricao.setText(this.duvida.getConteudo());
+        this.assunto.setText(getString(R.string.assunto)+": "+this.duvida.getAssunto());
+        this.interessado.setText(this.duvida.getInteressado());
         getActivity().setTitle(this.duvida.getNome());
         return this.rootView;
     }

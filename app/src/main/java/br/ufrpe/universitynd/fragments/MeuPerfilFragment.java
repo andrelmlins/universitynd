@@ -11,6 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.adapters.AdapterDuvidas;
 import br.ufrpe.universitynd.models.Duvida;
@@ -30,6 +31,7 @@ public class MeuPerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.perfil_fragment,container,false);
         getActivity().setTitle(R.string.perfil);
+        ((Main)getActivity()).setColor();
         return this.rootView;
     }
 }

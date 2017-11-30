@@ -25,10 +25,10 @@ public class Duvida implements Serializable {
         this.assunto = assunto;
     }
 
-    public Duvida(String nome, Date data, String texto){
+    public Duvida(String nome, Date data, String conteudo){
         this.nome = nome;
         this.data = data;
-        this.conteudo =conteudo;
+        this.conteudo = conteudo;
     }
 
 
@@ -82,6 +82,22 @@ public class Duvida implements Serializable {
 
     public void setAssunto(String assunto) {
         this.assunto = assunto;
+    }
+
+    public String[] getColor(){
+        if(this.assunto.equals("Disciplina") || this.assunto.equals("Discipline")){
+            return new String[]{"#3f51b5", "#3949ab"};
+        } else if(this.assunto.equals("Dispensa de Disciplina") || this.assunto.equals("Exemption from Discipline")){
+            return new String[]{"#009688", "#00897b"};
+        } else if(this.assunto.equals("Estágio") || this.assunto.equals("Intership")){
+            return new String[]{"#673ab7", "#5e35b1"};
+        } else if(this.assunto.equals("Matrícula") || this.assunto.equals("Registration")){
+            return new String[]{"#795548", "#6d4c41"};
+        } else if(this.assunto.equals("SECOMP")){
+            return new String[]{"#4caf50", "#43a047"};
+        } else {
+            return new String[]{"#ca2129", "#a11a20"};
+        }
     }
 
 }

@@ -24,6 +24,7 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
 import br.ufrpe.universitynd.utils.MultiSpinner;
@@ -33,7 +34,7 @@ import br.ufrpe.universitynd.utils.Requests;
  * Created by Danielly Queiroz on 24/11/2017.
  */
 
-public class DuvidaFormularioFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, Response.ErrorListener, Response.Listener<JSONObject> {
+public class PublicarDuvidaFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, Response.ErrorListener, Response.Listener<JSONObject> {
     private View rootView;
     private Button enviar;
     private Spinner assunto;
@@ -53,6 +54,7 @@ public class DuvidaFormularioFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvida_form_fragment,container,false);
         getActivity().setTitle(R.string.dizDuviva);
+        ((Main)getActivity()).setColor();
         this.requests = Requests.getInstance(getActivity());
 
         enviar = (Button) this.rootView.findViewById(R.id.enviar);
@@ -77,7 +79,7 @@ public class DuvidaFormularioFragment extends Fragment implements View.OnClickLi
             duvida.put("conteudo",this.conteudo.getText());
             duvida.put("assunto",this.assunto.getSelectedItem().toString());
             duvida.put("disciplina",this.disciplina.getSelectedItem().toString());
-            duvida.put("interessado",this.disciplina.getSelectedItem().toString());
+            duvida.put("interessado",this.interessado.getSelectedItem().toString());
             duvida.put("token",preferences.getString("token", ""));
             requests.post("duvidas",duvida,this,this);
         } catch (JSONException e) {

@@ -2,6 +2,7 @@ package br.ufrpe.universitynd.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.ufrpe.universitynd.Interface.RecyclerViewOnClickListenerHack;
+import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.adapters.AdapterDuvidas;
 import br.ufrpe.universitynd.models.Duvida;
@@ -32,13 +34,15 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState) {
         this.rootView = inflater.inflate(R.layout.busca_avancada_fragment, container, false);
         getActivity().setTitle(R.string.busca_avancada);
-
+        ((Main)getActivity()).setColor();
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
+        this.myRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager lls = new LinearLayoutManager(getActivity());
+        lls.setOrientation(LinearLayoutManager.VERTICAL);
+        this.myRecyclerView.setLayoutManager(lls);
 
         this.duvidas = new ArrayList<Duvida>();
         duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));
-
-
 
         this.adapter = new AdapterDuvidas(getActivity(), duvidas);
         this.adapter.setRecyclerViewOnClickListenerHack(this);

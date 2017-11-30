@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
@@ -17,32 +19,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/selecionar_categoria" />
-           <Spinner
-               android:id="@+id/spinner1"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:entries="@array/Categorias"
-               android:prompt="@string/prompt">
-           </Spinner>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardElevation="2dp"
+                card_view:contentPadding="10dp"
+                card_view:cardUseCompatPadding="true"
+                android:layout_marginBottom="10dp">
+               <Spinner
+                   android:id="@+id/spinner1"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:entries="@array/Categorias"
+                   android:prompt="@string/prompt">
+               </Spinner>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/textTipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:text="@string/selecionar_tipo" />
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/TipoUsuario"
-                android:prompt="@string/prompt">
-            </Spinner>
+                card_view:cardCornerRadius="2dp"
+                card_view:cardElevation="2dp"
+                card_view:contentPadding="10dp"
+                card_view:cardUseCompatPadding="true"
+                android:layout_marginBottom="10dp">
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/TipoUsuario"
+                    android:prompt="@string/prompt">
+                </Spinner>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
 <LinearLayout
@@ -77,10 +96,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ListView
-                android:id="@+id/lista"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/listaDuvidas"
+                android:scrollbars="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
         </LinearLayout>
     </LinearLayout>
 

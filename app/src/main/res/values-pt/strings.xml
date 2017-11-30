@@ -22,6 +22,7 @@
     <string name="ultDuvias">Última Dúvidas</string>
     <string name="dizDuviva">Diga a Sua Dúvida</string>
     <string name="perfil">Meu Perfil</string>
+    <string name="assunto">Assunto</string>
 
     <string-array name="Categorias">
         <item>Dispensa de Disciplina</item>
@@ -43,6 +44,11 @@
         <item>Coordenação</item>
         <item>Professor</item>
         <item>Secretária</item>
+    </string-array>
+
+    <string-array name="CorDefault">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorAccent</item>
     </string-array>
 
     <string-array name='Disciplinas'>

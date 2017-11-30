@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 
 /**
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.home_fragment,container,false);
         getActivity().setTitle("UniversityNd");
+        ((Main)getActivity()).setColor();
         this.publique_duvida = (CardView) this.rootView.findViewById(R.id.publique_duvida);
         this.ultimas_duvidas = (CardView) this.rootView.findViewById(R.id.ultimas_duvidas);
         this.busca_avancada = (CardView) this.rootView.findViewById(R.id.busca_avancada);
@@ -42,7 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.publique_duvida){
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidaFormularioFragment()).addToBackStack("").commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new PublicarDuvidaFragment()).addToBackStack("").commit();
         } else if(v.getId()==R.id.ultimas_duvidas){
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidasFragment()).addToBackStack("").commit();
         } else if (v.getId() == R.id.busca_avancada){

@@ -2,17 +2,26 @@ package br.ufrpe.universitynd;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,9 +30,9 @@ import com.squareup.picasso.Picasso;
 
 import br.ufrpe.universitynd.fragments.HomeFragment;
 
-public class Main extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private ActionBar actionBar;
+    private Fragment mContent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +47,8 @@ public class Main extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        actionBar = getSupportActionBar();
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
@@ -49,8 +60,14 @@ public class Main extends AppCompatActivity
         user_name.setText(preferences.getString("fullname", ""));
         user_email.setText(preferences.getString("email",""));
 
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.content_fragment, new HomeFragment()).commit();
+        if (savedInstanceState == null) {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.content_fragment, new HomeFragment(),"fragment").commit();
+        } else {
+            mContent = getSupportFragmentManager().findFragmentByTag("fragment");
+        }
+
+
     }
 
     @Override
@@ -104,5 +121,37 @@ public class Main extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle inState){
+        mContent = getSupportFragmentManager().getFragment(inState,"fragment");
+    }
+
+    public void setColor(String[] color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor(color[1]));
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(color[0])));
+        }
+    }
+    public void setColor(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getColor(R.color.colorPrimaryDark));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getColor(R.color.colorPrimary)));
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#a11a20"));
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ca2129")));
+        }
     }
 }

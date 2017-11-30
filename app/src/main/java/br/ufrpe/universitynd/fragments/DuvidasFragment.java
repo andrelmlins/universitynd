@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.ufrpe.universitynd.Interface.RecyclerViewOnClickListenerHack;
+import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.adapters.AdapterDuvidas;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
@@ -40,33 +41,20 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
 
         this.rootView = inflater.inflate(R.layout.duvidas_fragment,container,false);
         getActivity().setTitle(R.string.ultDuvias);//FALTA INTERNACIONALIZAR
+        ((Main)getActivity()).setColor();
 
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
-//        this.myRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                LinearLayoutManager llm = (LinearLayoutManager) myRecyclerView.getLayoutManager();
-//                AdapterDuvidas adapter1 = (AdapterDuvidas) myRecyclerView.getAdapter();
-//
-//                //Verifica se tamanho da lista  é igual ao ultimo da posicao
-//                if(duvidas.size() == llm.findLastCompletelyVisibleItemPosition() +1){
-//
-//                }
-//            }
-//        });
         this.myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager lls = new LinearLayoutManager(getActivity());
         lls.setOrientation(LinearLayoutManager.VERTICAL);
         this.myRecyclerView.setLayoutManager(lls);
 
         this.duvidas = new ArrayList<Duvida>();
-        duvidas.add(new Duvida("Danielly",new Date(),"Lorem ipsum integer aptent commodo pretium sit velit sagittis, vel vehicula tellus fusce inceptos facilisis ultrices porttitor venenatis, tempus eleifend felis laoreet tempus platea lacus. iaculis eleifend turpis sodales et "));
-        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 2"));
-        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 3"));
-        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 4"));
-        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 5"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Lorem ipsum integer aptent commodo pretium sit velit sagittis, vel vehicula tellus fusce inceptos facilisis ultrices porttitor venenatis, tempus eleifend felis laoreet tempus platea lacus. iaculis eleifend turpis sodales et ","Professor",null,"Disciplina"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 2","Aluno",null,"Estágio"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 3","Coordenação",null,"Matrícula"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 4","Professor",null,"SECOMP"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 5","Secretária",null,"Dispensa de Disciplina"));
 
         this.adapter = new AdapterDuvidas(getActivity(), duvidas);
         this.adapter.setRecyclerViewOnClickListenerHack(this);
