@@ -3,25 +3,25 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/meu_perfil"
         android:icon="@drawable/ic_person"
-        android:title="Meu Perfil" />
+        android:title="@string/meu_perfil" />
     <item
         android:id="@+id/minhas_perguntas"
         android:icon="@drawable/ic_help"
-        android:title="Minhas Perguntas" />
+        android:title="@string/myQues" />
     <item
         android:id="@+id/ultimas_perguntas"
         android:icon="@drawable/ic_history"
-        android:title="Últimas Perguntas" />
+        android:title="@string/ultDuvias" />
     <item
         android:id="@+id/busca_avancada"
         android:icon="@drawable/ic_search"
-        android:title="Busca Avançada" />
+        android:title="@string/busca_avancada" />
     <item
         android:id="@+id/sair"
         android:icon="@drawable/ic_exit"
-        android:title="Sair" />
+        android:title="@string/sair" />
 </menu>

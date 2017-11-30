@@ -17,6 +17,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private CardView publique_duvida;
     private CardView ultimas_duvidas;
     private CardView busca_avancada;
+    private CardView meu_perfil;
     private View rootView;
 
 
@@ -32,9 +33,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         this.publique_duvida = (CardView) this.rootView.findViewById(R.id.publique_duvida);
         this.ultimas_duvidas = (CardView) this.rootView.findViewById(R.id.ultimas_duvidas);
         this.busca_avancada = (CardView) this.rootView.findViewById(R.id.busca_avancada);
+        this.meu_perfil = (CardView) this.rootView.findViewById(R.id.meu_perfil);
         this.busca_avancada.setOnClickListener(this);
         this.publique_duvida.setOnClickListener(this);
         this.ultimas_duvidas.setOnClickListener(this);
+        this.meu_perfil.setOnClickListener(this);
+
         return this.rootView;
     }
 
