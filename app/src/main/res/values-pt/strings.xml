@@ -19,6 +19,9 @@
     <string name="bucar">Buscar</string>
     <string name="prompt">Selecione</string>
     <string name="limpar">Limpar</string>
+    <string name="ultDuvias">Última Dúvidas</string>
+    <string name="dizDuviva">Diga a Sua Dúvida</string>
+    <string name="perfil">Meu Perfil</string>
 
     <string-array name="Categorias">
         <item>Dispensa de Disciplina</item>

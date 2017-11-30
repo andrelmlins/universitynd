@@ -22,7 +22,7 @@ import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
 
 /**
- * Created by AndreLucas on 24/11/2017.
+ * Created by Danielly Queiroz on 24/11/2017.
  */
 
 public class DuvidasFragment extends Fragment implements RecyclerViewOnClickListenerHack {
@@ -39,7 +39,7 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
 
         this.rootView = inflater.inflate(R.layout.duvidas_fragment,container,false);
-        getActivity().setTitle("Últimas Dúvidas");//FALTA INTERNACIONALIZAR
+        getActivity().setTitle(R.string.ultDuvias);//FALTA INTERNACIONALIZAR
 
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
 //        this.myRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {

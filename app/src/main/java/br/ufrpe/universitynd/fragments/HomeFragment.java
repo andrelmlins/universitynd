@@ -18,6 +18,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private CardView ultimas_duvidas;
     private CardView busca_avancada;
     private View rootView;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +38,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         return this.rootView;
     }
 
+
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.publique_duvida){
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidaFormularioFragment()).addToBackStack("").commit();
         } else if(v.getId()==R.id.ultimas_duvidas){
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidasFragment()).addToBackStack("").commit();
-        }else if (v.getId() == R.id.busca_avancada){
+        } else if (v.getId() == R.id.busca_avancada){
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new BuscaAvancadaFragment()).addToBackStack("").commit();
+        } else if (v.getId() == R.id.meu_perfil){
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new MeuPerfilFragment()).addToBackStack("").commit();
         }
     }
 }

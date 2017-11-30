@@ -24,7 +24,7 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MultiSpinner);
         entries = a.getTextArray(R.styleable.MultiSpinner_android_entries);
         if (entries != null) {
-            selected = new boolean[entries.length]; // false-filled by default
+            selected = new boolean[entries.length];
         }
         a.recycle();
     }
