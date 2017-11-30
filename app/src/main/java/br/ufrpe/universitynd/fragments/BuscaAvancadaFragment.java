@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,17 +23,20 @@ import br.ufrpe.universitynd.models.Duvida;
  * Created by Tamires on 25/11/2017.
  */
 
-public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnItemClickListener,RecyclerViewOnClickListenerHack {
+public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnClickListenerHack {
     private View rootView;
     private Button btnBuscar, btnLimpar;
     private AdapterDuvidas adapter;
     private List<Duvida> duvidas;
     private RecyclerView myRecyclerView;
 
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState) {
+
         this.rootView = inflater.inflate(R.layout.busca_avancada_fragment, container, false);
         getActivity().setTitle(R.string.busca_avancada);
         ((Main)getActivity()).setColor();
+
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
         this.myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager lls = new LinearLayoutManager(getActivity());
@@ -43,6 +45,7 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
 
         this.duvidas = new ArrayList<Duvida>();
         duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));
+        duvidas.add(new Duvida("Nome", new Date(),"Pergunta 2"));
 
         this.adapter = new AdapterDuvidas(getActivity(), duvidas);
         this.adapter.setRecyclerViewOnClickListenerHack(this);
@@ -69,13 +72,6 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
     }
 
     @Override
-    public  void  onSaveInstanceState(final  Bundle outState){
-        super.onSaveInstanceState(outState);
-        //outState.putSerializable();
-    }
-
-
-    @Override
     public void onClickListener(View view, int position) {
             Duvida duvida = this.duvidas.get(position);
             DuvidaFragment fragment = new DuvidaFragment();
@@ -85,8 +81,5 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    }
 }

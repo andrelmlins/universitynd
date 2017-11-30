@@ -23,6 +23,9 @@
     <string name="dizDuviva">Diga a Sua Dúvida</string>
     <string name="perfil">Meu Perfil</string>
     <string name="assunto">Assunto</string>
+    <string name="home">Home</string>
+    <string name="myQues">Minhas Perguntas</string>
+    <string name="sair">Sair</string>
 
     <string-array name="Categorias">
         <item>Dispensa de Disciplina</item>
