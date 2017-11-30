@@ -8,24 +8,39 @@
     <string name="ultimas_duvidas">Últimas Dúvidas</string>
     <string name="busca_avancada">Busca Avançada</string>
     <string name="meu_perfil">Meu Perfil</string>
+
     <string name="responder">Responder</string>
     <string name="suaResposta">Digite Sua Resposta</string>
     <string name="cancelar">Cancelar</string>
+
     <string name="usuario">Usuário</string>
     <string name="senha">Senha</string>
     <string name="acessoAva">Login com o AVA</string>
+
     <string name="selecionar_categoria">Selecione uma Categoria:</string>
     <string name="selecionar_tipo">Selecione um Tipo de Usuário:</string>
     <string name="bucar">Buscar</string>
+
     <string name="prompt">Selecione</string>
     <string name="limpar">Limpar</string>
-    <string name="ultDuvias">Última Dúvidas</string>
     <string name="dizDuviva">Diga a Sua Dúvida</string>
+
     <string name="perfil">Meu Perfil</string>
     <string name="assunto">Assunto</string>
     <string name="home">Home</string>
     <string name="myQues">Minhas Perguntas</string>
     <string name="sair">Sair</string>
+    <string name="enviar">Enviar Dúvida</string>
+    <string name="prof">Professor</string>
+    <string name="coord">Coordenação</string>
+
+    <string name="titulo">Título</string>
+    <string name="curso">Curso</string>
+    <string name="disciplina">Disciplina</string>
+    <string name="interessado">Interessado</string>
+    <string name="conteudo">Conteúdo</string>
+    <string name="duvidas">Dúvidas</string>
+    <string name="respostas">Respostas</string>
 
     <string-array name="Categorias">
         <item>Dispensa de Disciplina</item>
@@ -46,7 +61,7 @@
         <item>Aluno</item>
         <item>Coordenação</item>
         <item>Professor</item>
-        <item>Secretária</item>
+        <item>Secretaria</item>
     </string-array>
 
     <string-array name="CorDefault">

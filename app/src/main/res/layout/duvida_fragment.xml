@@ -52,7 +52,7 @@
                 android:textSize="10dp"
                 android:id="@+id/DuvidaInteressado"
                 android:textColor="@android:color/black"
-                android:text="Professor" />
+                android:text="@string/prof" />
         </LinearLayout>
 
         <TextView
