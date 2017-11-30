@@ -28,6 +28,7 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
     private Button btnBuscar, btnLimpar;
     private AdapterDuvidas adapter;
     private List<Duvida> duvidas;
+
     private RecyclerView myRecyclerView;
 
 
@@ -37,11 +38,12 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
         getActivity().setTitle(R.string.busca_avancada);
         ((Main)getActivity()).setColor();
 
-        this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
-        this.myRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager lls = new LinearLayoutManager(getActivity());
+        this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas); // Acessar o RecyclerView
+        this.myRecyclerView.setHasFixedSize(true); // otimizando dizendo que o tamanho do RecyclerView nao irá mudar
+
+        LinearLayoutManager lls = new LinearLayoutManager(getActivity());//Gerenciar a apresentacao dos itens
         lls.setOrientation(LinearLayoutManager.VERTICAL);
-        this.myRecyclerView.setLayoutManager(lls);
+        this.myRecyclerView.setLayoutManager(lls);//setando o linearLayout dentro do RecyclerView
 
         this.duvidas = new ArrayList<Duvida>();
         duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));

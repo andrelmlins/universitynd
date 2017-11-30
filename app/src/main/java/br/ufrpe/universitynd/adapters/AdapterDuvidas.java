@@ -38,7 +38,7 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
 
     }
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) { // criar uma nova view so quando for necessário
         View v = mLayoutInflater.inflate(R.layout.adapter_duvidas, viewGroup,false);
         //Criar nosso viewHolder
         MyViewHolder mvh = new MyViewHolder(v);
@@ -46,10 +46,11 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.tvNome.setText(mDuvidas.get(position).getNome());
+    public void onBindViewHolder(MyViewHolder holder, int position) {//vincula os dados da lista a view
+        holder.tvNome.setText(mDuvidas.get(position).getNome()); //seta os valores
         holder.tvData.setText(mDuvidas.get(position).getDataFormatada(mDuvidas.get(position).getData()));
         holder.tvDescricao.setText(mDuvidas.get(position).getConteudo());
+        //perguntar a andré
         SharedPreferences preferences = context.getSharedPreferences("usuario",0);
         Picasso.with(context).load(preferences.getString("picture","")).into(holder.userImage);
         if(position==mDuvidas.size()){
@@ -92,47 +93,4 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
         }
     }
 
-//    private final List<Duvida> duvidas;
-//    private final Activity act;
-//    private TextView nome;
-//
-//
-//    public AdapterDuvidas(List<Duvida> duvidas, Activity act) {
-//        this.duvidas = duvidas;
-//        this.act = act;
-//
-//    }
-//
-//    @Override
-//    public int getCount() {
-//
-//        return duvidas.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//
-//        return duvidas.get(position);
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//
-//        return 0;
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup viewGroup) {
-//        View view = act.getLayoutInflater()
-//                .inflate(R.layout.adapter_duvidas, viewGroup, false);
-//        Duvida duvida = duvidas.get(position);
-//        TextView nome = (TextView) view.findViewById(R.id.DuvidaNome);
-//        TextView data = (TextView) view.findViewById(R.id.DuvidaData);
-//        TextView descricao = (TextView) view.findViewById(R.id.DuvidaDescricao);
-//
-//        nome.setText(duvida.getNome());
-//        data.setText(duvida.getDataFormatada(duvida.getData()));
-//        descricao.setText(duvida.getTexto());
-//        return view;
-//    }
 }

@@ -61,22 +61,12 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
 
         this.myRecyclerView.setAdapter(this.adapter);
 
-//        this.adapter = new AdapterDuvidas(duvidas, getActivity());
-        //this.listView.setAdapter(adapter);
-//        this.myRecyclerView.setOnItemClickListener(this);
+
 
         return this.rootView;
     }
 
-//    @Override
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Duvida duvida = this.duvidas.get(position);
-//        DuvidaFragment fragment = new DuvidaFragment();
-//        Bundle b = new Bundle();
-//        b.putSerializable("duvida", duvida);
-//        fragment.setArguments(b);
-//        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
-//    }
+
 
     @Override
     public void onClickListener(View view, int posicao) {
