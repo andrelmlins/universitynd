@@ -7,7 +7,7 @@
     <com.mikhaellopez.circularimageview.CircularImageView
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="6dp"
         android:layout_marginLeft="12dp"
         app:civ_shadow="false"
         app:civ_border="false"
