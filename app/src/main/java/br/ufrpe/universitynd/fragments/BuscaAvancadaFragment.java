@@ -46,8 +46,11 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
         this.myRecyclerView.setLayoutManager(lls);//setando o linearLayout dentro do RecyclerView
 
         this.duvidas = new ArrayList<Duvida>();
-        duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));
-        duvidas.add(new Duvida("Nome", new Date(),"Pergunta 2"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Lorem ipsum integer aptent commodo pretium sit velit sagittis, vel vehicula tellus fusce inceptos facilisis ultrices porttitor venenatis, tempus eleifend felis laoreet tempus platea lacus. iaculis eleifend turpis sodales et ","Professor",null,"Disciplina"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 2","Aluno",null,"Estágio"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 3","Coordenação",null,"Matrícula"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 4","Professor",null,"SECOMP"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 5","Secretária",null,"Dispensa de Disciplina"));
 
         this.adapter = new AdapterDuvidas(getActivity(), duvidas);
         this.adapter.setRecyclerViewOnClickListenerHack(this);
