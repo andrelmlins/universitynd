@@ -12,10 +12,8 @@
 
     <string name="responder">Answer</string>
     <string name="suaResposta">Enter your answer</string>
-    <string name="enviar">Submit</string>
     <string name="cancelar">Cancel</string>
 
-    <string name="textoLogin">You must be logged in with your Ava account.</string>
     <string name="usuario">User</string>
     <string name="senha">Password</string>
     <string name="acessoAva">Login with AVA</string>

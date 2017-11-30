@@ -33,10 +33,12 @@ public class BuscaAvancadaFragment extends Fragment implements  AdapterView.OnIt
         this.rootView = inflater.inflate(R.layout.busca_avancada_fragment, container, false);
         getActivity().setTitle(R.string.busca_avancada);
 
-        this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.lista);
+        this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
 
         this.duvidas = new ArrayList<Duvida>();
         duvidas.add(new Duvida("Nome", new Date(),"Pergunta 1"));
+
+
 
         this.adapter = new AdapterDuvidas(getActivity(), duvidas);
         this.adapter.setRecyclerViewOnClickListenerHack(this);

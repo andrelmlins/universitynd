@@ -10,9 +10,7 @@
     <string name="meu_perfil">Meu Perfil</string>
     <string name="responder">Responder</string>
     <string name="suaResposta">Digite Sua Resposta</string>
-    <string name="enviar">Enviar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="textoLogin">Você deve realizar o login com sua conta do AVA.</string>
     <string name="usuario">Usuário</string>
     <string name="senha">Senha</string>
     <string name="acessoAva">Login com o AVA</string>
