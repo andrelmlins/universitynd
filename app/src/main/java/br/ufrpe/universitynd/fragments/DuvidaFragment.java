@@ -31,11 +31,13 @@ public class DuvidaFragment extends Fragment {
     private TextView assunto;
     private TextView descricao;
     private TextView interessado;
+    private int gone = View.GONE;
+    private int visible = View.VISIBLE;
+    private boolean mostrarResposta = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 
@@ -57,21 +59,39 @@ public class DuvidaFragment extends Fragment {
         this.assunto = (TextView) this.rootView.findViewById(R.id.DuvidaAssunto);
         this.interessado = (TextView) this.rootView.findViewById(R.id.DuvidaInteressado);
 
+        if(savedInstanteState!= null){
+            mostrarResposta = savedInstanteState.getBoolean("mostrarResposta");
+
+            if(mostrarResposta){
+                DuvidaFragment.this.llResposta.setVisibility(visible);
+                DuvidaFragment.this.btnResponder.setVisibility(gone);
+                DuvidaFragment.this.edtResposta.setText(savedInstanteState.getString("edtResposta"));
+
+
+           }else{
+                DuvidaFragment.this.llResposta.setVisibility(gone);
+                DuvidaFragment.this.btnResponder.setVisibility(visible);
+                DuvidaFragment.this.edtResposta.setText("");
+           }
+
+        }
         // Mostra o formulario de Resposta
         this.btnResponder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DuvidaFragment.this.llResposta.setVisibility(View.VISIBLE);
-                DuvidaFragment.this.btnResponder.setVisibility(View.GONE);
+                DuvidaFragment.this.llResposta.setVisibility(visible);
+                DuvidaFragment.this.btnResponder.setVisibility(gone);
+                mostrarResposta = true;
             }
         });
         //Voltar para a Pergunta
         this.btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DuvidaFragment.this.llResposta.setVisibility(View.GONE);
-                DuvidaFragment.this.btnResponder.setVisibility(View.VISIBLE);
+                DuvidaFragment.this.llResposta.setVisibility(gone);
+                DuvidaFragment.this.btnResponder.setVisibility(visible);
                 DuvidaFragment.this.edtResposta.setText("");
+                mostrarResposta = false;
             }
         });
         //Seta os valores da Duvida
@@ -83,5 +103,13 @@ public class DuvidaFragment extends Fragment {
         getActivity().setTitle(this.duvida.getNome());
         return this.rootView;
     }
-  
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("mostrarResposta", mostrarResposta);
+        outState.putString("edtResposta", edtResposta.getText().toString());
+
+        super.onSaveInstanceState(outState);
+
+    }
 }
