@@ -5,7 +5,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="publique_duvida">Post Yours Questions</string>
-    <string name="ultimas_duvidas">Last Doubts</string>
+    <string name="ultimas_duvidas">Last Questions</string>
     <string name="busca_avancada">Advanced Search</string>
     <string name="meu_perfil">My Profile</string>
 
@@ -23,7 +23,7 @@
 
     <string name="prompt">Select</string>
     <string name="limpar">Clear</string>
-    <string name="dizDuviva">Tell Us Your Doubts</string>
+    <string name="dizDuviva">Tell Us Your Questions</string>
 
     <string name="perfil">My Profile</string>
     <string name="assunto">Subject</string>
@@ -39,8 +39,8 @@
     <string name="disciplina">Discipline</string>
     <string name="interessado">Concerned parts</string>
     <string name="conteudo">Content</string>
-    <string name="duvidas">Doubts</string>
-    <string name="respostas">Answer</string>
+    <string name="duvidas">Questions</string>
+    <string name="respostas">Answers</string>
 
 
     <string-array name="Categorias">

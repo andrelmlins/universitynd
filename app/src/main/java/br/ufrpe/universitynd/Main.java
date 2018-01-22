@@ -28,7 +28,10 @@ import android.widget.TextView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
+import br.ufrpe.universitynd.fragments.BuscaAvancadaFragment;
+import br.ufrpe.universitynd.fragments.DuvidasFragment;
 import br.ufrpe.universitynd.fragments.HomeFragment;
+import br.ufrpe.universitynd.fragments.MeuPerfilFragment;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ActionBar actionBar;
@@ -110,7 +113,11 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 
         if (id == R.id.home) {
             fm.beginTransaction().replace(R.id.content_fragment, new HomeFragment()).addToBackStack("").commit();
-        } else if(id == R.id.sair) {
+        } else if(id == R.id.meu_perfil){
+            fm.beginTransaction().replace(R.id.content_fragment, new MeuPerfilFragment()).addToBackStack("").commit();
+        } else if(id == R.id.busca_avancada){
+            fm.beginTransaction().replace(R.id.content_fragment, new BuscaAvancadaFragment()).addToBackStack("").commit();
+        }  else if(id == R.id.sair) {
             SharedPreferences preferences = getSharedPreferences("usuario", 0);
             preferences.edit().clear().commit();
             Intent i = new Intent(Main.this, LoginActivity.class);
