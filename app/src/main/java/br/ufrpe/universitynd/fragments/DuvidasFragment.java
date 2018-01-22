@@ -98,13 +98,13 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
         try {
             SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
 
-            JSONArray arrayDuvidas = response.getJSONArray("duvidas");
+            JSONArray arrayDuvidas = response.getJSONArray("data");
             JSONObject jsonDuvida;
             for(int i = 0; i< arrayDuvidas.length()-1; i++){
                 jsonDuvida = arrayDuvidas.getJSONObject(i);
 
                 this.duvidas.add(new Duvida( jsonDuvida.getString("titulo"),
-                        new Date(f.parse(response.getString("created_at")).getTime()),
+                        new Date(f.parse(jsonDuvida.getString("created_at")).getTime()),
                         jsonDuvida.getString("conteudo"),
                         jsonDuvida.getString("interessado"),
                         null,

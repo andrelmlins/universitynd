@@ -17,7 +17,6 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.ufrpe.universitynd.teste.Teste;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
@@ -97,6 +96,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         Toast.makeText(this, "Erro de Conexão :(", Toast.LENGTH_SHORT).show();
 
         // TESTE LOGIN FAKE
-        Teste.login(this,this.progress);
+        //Teste.login(this,this.progress);
     }
 }
