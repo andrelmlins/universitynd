@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -20,13 +19,14 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
+import br.ufrpe.universitynd.teste.Teste;
 import br.ufrpe.universitynd.utils.MultiSpinner;
 import br.ufrpe.universitynd.utils.Requests;
 
@@ -105,6 +105,13 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+
+        // teste duvidas
+        String[] dis = {this.disciplina.getSelectedItem().toString()};
+        Teste.addDuv(new Duvida(this.titulo.getText().toString(),new Date(),this.conteudo.getText().toString(),
+                this.interessado.getSelectedItem().toString(),
+                dis,
+                this.assunto.getSelectedItem().toString()));
     }
 
     @Override
