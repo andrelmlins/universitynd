@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -22,11 +23,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private CardView meu_perfil;
     private View rootView;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.search).setVisible(false);
+        menu.findItem(R.id.edit).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){

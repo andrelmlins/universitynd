@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
@@ -32,8 +33,10 @@ import br.ufrpe.universitynd.fragments.BuscaAvancadaFragment;
 import br.ufrpe.universitynd.fragments.DuvidasFragment;
 import br.ufrpe.universitynd.fragments.HomeFragment;
 import br.ufrpe.universitynd.fragments.MeuPerfilFragment;
+import br.ufrpe.universitynd.fragments.MinhasDuvidasFragment;
+import br.ufrpe.universitynd.fragments.RankingFragment;
 
-public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
     private ActionBar actionBar;
     private Fragment mContent;
     @Override
@@ -92,16 +95,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the HomeFragment/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -117,6 +111,12 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             fm.beginTransaction().replace(R.id.content_fragment, new MeuPerfilFragment()).addToBackStack("").commit();
         } else if(id == R.id.busca_avancada){
             fm.beginTransaction().replace(R.id.content_fragment, new BuscaAvancadaFragment()).addToBackStack("").commit();
+        }  else if(id == R.id.minhas_perguntas){
+            fm.beginTransaction().replace(R.id.content_fragment, new MinhasDuvidasFragment()).addToBackStack("").commit();
+        } else if(id == R.id.ultimas_perguntas){
+            fm.beginTransaction().replace(R.id.content_fragment, new DuvidasFragment()).addToBackStack("").commit();
+        } else if(id == R.id.ranking){
+            fm.beginTransaction().replace(R.id.content_fragment, new RankingFragment()).addToBackStack("").commit();
         }  else if(id == R.id.sair) {
             SharedPreferences preferences = getSharedPreferences("usuario", 0);
             preferences.edit().clear().commit();
@@ -160,5 +160,15 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             window.setStatusBarColor(Color.parseColor("#a11a20"));
             actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ca2129")));
         }
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
 }

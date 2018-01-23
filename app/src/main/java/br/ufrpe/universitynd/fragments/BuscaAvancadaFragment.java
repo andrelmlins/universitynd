@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,14 +26,27 @@ import br.ufrpe.universitynd.models.Duvida;
  * Created by Tamires on 25/11/2017.
  */
 
-public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnClickListenerHack {
+public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnClickListenerHack, SearchView.OnQueryTextListener {
     private View rootView;
     private Button btnBuscar, btnLimpar;
     private AdapterDuvidas adapter;
     private List<Duvida> duvidas;
-
     private RecyclerView myRecyclerView;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.search).setVisible(true);
+        menu.findItem(R.id.edit).setVisible(false);
+        MenuItem mSearchMenuItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        super.onPrepareOptionsMenu(menu);
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState) {
 
@@ -45,12 +61,12 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
         lls.setOrientation(LinearLayoutManager.VERTICAL);
         this.myRecyclerView.setLayoutManager(lls);//setando o linearLayout dentro do RecyclerView
 
-        this.duvidas = new ArrayList<Duvida>();
+        /*this.duvidas = new ArrayList<Duvida>();
         duvidas.add(new Duvida("Danielly",new Date(),"Lorem ipsum integer aptent commodo pretium sit velit sagittis, vel vehicula tellus fusce inceptos facilisis ultrices porttitor venenatis, tempus eleifend felis laoreet tempus platea lacus. iaculis eleifend turpis sodales et ","Professor",null,"Disciplina"));
         duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 2","Aluno",null,"Estágio"));
         duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 3","Coordenação",null,"Matrícula"));
         duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 4","Professor",null,"SECOMP"));
-        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 5","Secretária",null,"Dispensa de Disciplina"));
+        duvidas.add(new Duvida("Danielly",new Date(),"Pergunta 5","Secretária",null,"Dispensa de Disciplina"));*/
 
         this.adapter = new AdapterDuvidas(getActivity(), duvidas);
         this.adapter.setRecyclerViewOnClickListenerHack(this);
@@ -87,4 +103,14 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        this.adapter.filter(newText);
+        return true;
+    }
 }

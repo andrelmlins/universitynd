@@ -21,9 +21,9 @@ public class Teste {
 
     private static void initDuvidas(){
         String[] dis = {"dis1","dis2","dis3"};
-        duvidas.add(new Duvida("nome1", new Date(), "conteudo1", "interessado1",dis, "assunto1"));
+        /* duvidas.add(new Duvida("nome1", new Date(), "conteudo1", "interessado1",dis, "assunto1"));
         duvidas.add(new Duvida("nome2", new Date(), "conteudo2", "interessado2",dis, "assunto2"));
-        duvidas.add(new Duvida("nome3", new Date(), "conteudo3", "interessado3",dis, "assunto3"));
+        duvidas.add(new Duvida("nome3", new Date(), "conteudo3", "interessado3",dis, "assunto3")); */
     }
 
     public static void addDuv(Duvida duvida){

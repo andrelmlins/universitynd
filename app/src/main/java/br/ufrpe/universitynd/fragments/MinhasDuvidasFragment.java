@@ -1,11 +1,13 @@
 package br.ufrpe.universitynd.fragments;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,10 +38,10 @@ import br.ufrpe.universitynd.models.Usuario;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
- * Created by Danielly Queiroz on 24/11/2017.
+ * Created by AndreLucas on 23/01/2018.
  */
 
-public class DuvidasFragment extends Fragment implements RecyclerViewOnClickListenerHack, Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener{
+public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnClickListenerHack, Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener{
     private View rootView;
     private RecyclerView myRecyclerView;
     private AdapterDuvidas adapter;
@@ -62,7 +65,7 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvidas_fragment,container,false);
-        getActivity().setTitle(R.string.ultimas_duvidas);
+        getActivity().setTitle(R.string.myQues);
         ((Main)getActivity()).setColor();
         this.requests = Requests.getInstance(getActivity());
 
@@ -73,8 +76,10 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
         lls.setOrientation(LinearLayoutManager.VERTICAL);
         this.myRecyclerView.setLayoutManager(lls);
 
+        SharedPreferences preferences = getActivity().getSharedPreferences("usuario",0);
         this.progress = ProgressDialog.show(getActivity(), "","Carregando as dúvidas...", true);
-        requests.getObject("duvidas",this,this);
+        Log.e("TESTE","duvidas/usuario/"+preferences.getString("token",""));
+        requests.getObject("duvidas/usuario/"+preferences.getString("token",""),this,this);
         return this.rootView;
     }
 

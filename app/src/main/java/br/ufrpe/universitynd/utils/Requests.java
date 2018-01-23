@@ -42,4 +42,16 @@ public class Requests {
         request.setRetryPolicy(new DefaultRetryPolicy(50000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mQueue.add(request);
     }
+
+    public void put(String url, JSONObject data, Response.Listener<JSONObject> callback, Response.ErrorListener error) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, ROOT+url, data, callback, error);
+        request.setRetryPolicy(new DefaultRetryPolicy(50000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mQueue.add(request);
+    }
+
+    public void delete(String url, JSONObject data, Response.Listener<JSONObject> callback, Response.ErrorListener error) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, ROOT+url, data, callback, error);
+        request.setRetryPolicy(new DefaultRetryPolicy(50000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mQueue.add(request);
+    }
 }

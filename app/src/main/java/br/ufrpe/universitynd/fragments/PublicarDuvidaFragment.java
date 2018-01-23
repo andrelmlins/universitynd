@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ import java.util.Date;
 import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
+import br.ufrpe.universitynd.models.Usuario;
 import br.ufrpe.universitynd.utils.MultiSpinner;
 import br.ufrpe.universitynd.utils.Requests;
 
@@ -48,6 +50,12 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.search).setVisible(false);
+        menu.findItem(R.id.edit).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
@@ -118,7 +126,7 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
         Duvida duvida = null;
         try {
             SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
-            duvida = new Duvida(response.getString("titulo"),new Date(f.parse(response.getString("created_at")).getTime()),response.getString("conteudo"),response.getString("interessado"),null,response.getString("assunto"));
+            duvida = new Duvida(response.getString("titulo"),new Date(f.parse(response.getString("created_at")).getTime()),response.getString("conteudo"),response.getString("interessado"),null,response.getString("assunto"),new Usuario(response.getString("username"),response.getString("userimage")));
         } catch (JSONException | ParseException e) {
             e.printStackTrace();
         }

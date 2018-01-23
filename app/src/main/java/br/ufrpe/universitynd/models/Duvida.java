@@ -15,14 +15,16 @@ public class Duvida implements Serializable {
     private String interessado;
     private String[] disciplinas;
     private String assunto;
+    private Usuario usuario;
 
-    public Duvida(String nome, Date data, String conteudo, String interessado, String[] disciplinas, String assunto) {
+    public Duvida(String nome, Date data, String conteudo, String interessado, String[] disciplinas, String assunto, Usuario usuario) {
         this.nome = nome;
         this.data = data;
         this.conteudo = conteudo;
         this.interessado = interessado;
         this.disciplinas = disciplinas;
         this.assunto = assunto;
+        this.usuario = usuario;
     }
 
     public Duvida(String nome, Date data, String conteudo){
@@ -100,4 +102,11 @@ public class Duvida implements Serializable {
         }
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
