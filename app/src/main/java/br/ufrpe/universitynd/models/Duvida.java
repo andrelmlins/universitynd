@@ -9,6 +9,7 @@ import java.util.Date;
  */
 
 public class Duvida implements Serializable {
+    private String id;
     private String nome;
     private Date data;
     private String conteudo;
@@ -17,7 +18,7 @@ public class Duvida implements Serializable {
     private String assunto;
     private Usuario usuario;
 
-    public Duvida(String nome, Date data, String conteudo, String interessado, String[] disciplinas, String assunto, Usuario usuario) {
+    public Duvida(String id, String nome, Date data, String conteudo, String interessado, String[] disciplinas, String assunto, Usuario usuario) {
         this.nome = nome;
         this.data = data;
         this.conteudo = conteudo;
@@ -25,6 +26,7 @@ public class Duvida implements Serializable {
         this.disciplinas = disciplinas;
         this.assunto = assunto;
         this.usuario = usuario;
+        this.id = id;
     }
 
     public Duvida(String nome, Date data, String conteudo){
@@ -108,5 +110,13 @@ public class Duvida implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -3,6 +3,7 @@ package br.ufrpe.universitynd.fragments;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -22,6 +23,8 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import br.ufrpe.universitynd.Main;
@@ -32,10 +35,10 @@ import br.ufrpe.universitynd.utils.MultiSpinner;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
- * Created by Danielly Queiroz on 24/11/2017.
+ * Created by AndreLucas on 23/01/2018.
  */
 
-public class PublicarDuvidaFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, Response.ErrorListener, Response.Listener<JSONObject> {
+public class EditarDuvidaFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, Response.ErrorListener, Response.Listener<JSONObject> {
     private View rootView;
     private Button enviar;
     private Spinner assunto;
@@ -45,6 +48,7 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
     private EditText conteudo;
     private LinearLayout disciplina_layout;
     private Requests requests;
+    private Duvida duvida;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +64,10 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvida_form_fragment,container,false);
-        getActivity().setTitle(R.string.dizDuviva);
+        getActivity().setTitle(R.string.editDuviva);
         ((Main)getActivity()).setColor();
         this.requests = Requests.getInstance(getActivity());
+        this.duvida = (Duvida) this.getArguments().get("duvida");
 
         enviar = (Button) this.rootView.findViewById(R.id.enviar);
         assunto = (Spinner) this.rootView.findViewById(R.id.assunto);
@@ -74,8 +79,20 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
         disciplina_layout.setVisibility(View.GONE);
         enviar.setOnClickListener(this);
         assunto.setOnItemSelectedListener(this);
+
+        conteudo.setText(duvida.getConteudo());
+        titulo.setText(duvida.getNome());
+        assunto.setSelection(new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.Categorias))).indexOf(duvida.getAssunto()));
+        interessado.setSelection(new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.Categorias))).indexOf(duvida.getInteressado()));
+        if(duvida.getAssunto().equals("Disciplina") || duvida.getAssunto().equals("Dispensa de Disciplina")){
+            disciplina_layout.setVisibility(View.VISIBLE);
+        } else {
+            disciplina_layout.setVisibility(View.GONE);
+        }
+
         return this.rootView;
     }
+
 
     @Override
     public void onClick(View v) {
@@ -88,7 +105,8 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
             duvida.put("disciplina",this.disciplina.getSelectedItem().toString());
             duvida.put("interessado",this.interessado.getSelectedItem().toString());
             duvida.put("token",preferences.getString("token", ""));
-            requests.post("duvidas",duvida,this,this);
+            duvida.put("duvida_id",this.duvida.getId());
+            requests.post("duvidas/editar",duvida,this,this);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -112,13 +130,6 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
-
-        // teste duvidas
-//        String[] dis = {this.disciplina.getSelectedItem().toString()};
-//        Teste.addDuv(new Duvida(this.titulo.getText().toString(),new Date(),this.conteudo.getText().toString(),
-//                this.interessado.getSelectedItem().toString(),
-//                dis,
-//                this.assunto.getSelectedItem().toString()));
     }
 
     @Override

@@ -81,7 +81,6 @@ public class RankingFragment extends Fragment implements Response.ErrorListener,
 
     @Override
     public void onResponse(JSONObject response) {
-        Log.e("TESTE","t");
         try {
             JSONArray usuarios = response.getJSONArray("data");
             JSONObject jsonDuvida;

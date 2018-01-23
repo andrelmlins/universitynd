@@ -50,7 +50,7 @@ public class AdapterUsuarios extends BaseAdapter {
 
         nome.setText(u.getNomeCompleto());
         quantidade.setText("Respostas: "+u.getRespostas());
-        posicao.setText(position+"");
+        posicao.setText((position+1)+"");
         Picasso.with(view.getContext()).load(u.getFoto()).into(image);
 
         return view;

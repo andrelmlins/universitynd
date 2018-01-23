@@ -24,6 +24,7 @@
     <string name="prompt">Selecione</string>
     <string name="limpar">Limpar</string>
     <string name="dizDuviva">Diga a Sua Dúvida</string>
+    <string name="editDuviva">Edite a Sua Dúvida</string>
 
     <string name="perfil">Meu Perfil</string>
     <string name="assunto">Assunto</string>

@@ -86,7 +86,6 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
         b.putSerializable("duvida", duvida);
         fragment.setArguments(b);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
-
     }
 
     @Override
@@ -102,15 +101,15 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
 
             JSONArray arrayDuvidas = response.getJSONArray("data");
             JSONObject jsonDuvida;
-            for(int i = 0; i< arrayDuvidas.length()-1; i++){
+            for(int i = 0; i< arrayDuvidas.length(); i++){
                 jsonDuvida = arrayDuvidas.getJSONObject(i);
 
-                this.duvidas.add(new Duvida(jsonDuvida.getString("titulo"),
+                this.duvidas.add(new Duvida(jsonDuvida.getString("id"),jsonDuvida.getString("titulo"),
                         new Date(f.parse(jsonDuvida.getString("created_at")).getTime()),
                         jsonDuvida.getString("conteudo"),
                         jsonDuvida.getString("interessado"),
                         null,
-                        jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"))));
+                        jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"),jsonDuvida.getString("usertoken"))));
 
             }
             this.adapter = new AdapterDuvidas(getActivity(), this.duvidas);

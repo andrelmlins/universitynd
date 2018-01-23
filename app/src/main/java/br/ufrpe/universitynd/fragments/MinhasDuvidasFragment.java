@@ -65,6 +65,7 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvidas_fragment,container,false);
+        this.progress = ProgressDialog.show(getActivity(), "","Carregando as dúvidas...", true);
         getActivity().setTitle(R.string.myQues);
         ((Main)getActivity()).setColor();
         this.requests = Requests.getInstance(getActivity());
@@ -77,8 +78,6 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
         this.myRecyclerView.setLayoutManager(lls);
 
         SharedPreferences preferences = getActivity().getSharedPreferences("usuario",0);
-        this.progress = ProgressDialog.show(getActivity(), "","Carregando as dúvidas...", true);
-        Log.e("TESTE","duvidas/usuario/"+preferences.getString("token",""));
         requests.getObject("duvidas/usuario/"+preferences.getString("token",""),this,this);
         return this.rootView;
     }
@@ -107,15 +106,15 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
 
             JSONArray arrayDuvidas = response.getJSONArray("data");
             JSONObject jsonDuvida;
-            for(int i = 0; i< arrayDuvidas.length()-1; i++){
+            for(int i = 0; i< arrayDuvidas.length(); i++){
                 jsonDuvida = arrayDuvidas.getJSONObject(i);
 
-                this.duvidas.add(new Duvida(jsonDuvida.getString("titulo"),
+                this.duvidas.add(new Duvida(jsonDuvida.getString("id"),jsonDuvida.getString("titulo"),
                         new Date(f.parse(jsonDuvida.getString("created_at")).getTime()),
                         jsonDuvida.getString("conteudo"),
                         jsonDuvida.getString("interessado"),
                         null,
-                        jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"))));
+                        jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"),jsonDuvida.getString("usertoken"))));
 
             }
             this.adapter = new AdapterDuvidas(getActivity(), this.duvidas);

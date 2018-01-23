@@ -2,6 +2,8 @@ package br.ufrpe.universitynd.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,9 +56,10 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
         holder.tvNome.setText(mDuvidas.get(position).getNome()); //seta os valores
         holder.tvData.setText(mDuvidas.get(position).getDataFormatada(mDuvidas.get(position).getData()));
         holder.tvDescricao.setText(mDuvidas.get(position).getConteudo());
+        holder.color.setBackground(new ColorDrawable(Color.parseColor(mDuvidas.get(position).getColor()[0])));
         Picasso.with(context).load(mDuvidas.get(position).getUsuario().getFoto()).into(holder.userImage);
-        if(position==mDuvidas.size()){
-            holder.line.setVisibility(View.GONE);
+        if(position==mDuvidas.size()-1){
+            //holder.line.setBackgroundColor(Color.TRANSPARENT);
         }
     }
 
@@ -92,7 +95,8 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
         public TextView tvData;
         public TextView tvDescricao;
         public CircularImageView userImage;
-        public LinearLayout line;
+        public View line;
+        public LinearLayout color;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -100,7 +104,8 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
             tvData = (TextView) itemView.findViewById(R.id.DuvidaData);
             tvDescricao = (TextView) itemView.findViewById(R.id.DuvidaDescricao);
             userImage = (CircularImageView) itemView.findViewById(R.id.user_image_list);
-            line = (LinearLayout) itemView.findViewById(R.id.line);
+            line = (View) itemView.findViewById(R.id.line);
+            color = (LinearLayout) itemView.findViewById(R.id.color);
             itemView.setOnClickListener(this);
         }
 

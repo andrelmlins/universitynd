@@ -1,20 +1,24 @@
 package br.ufrpe.universitynd.models;
 
+import java.io.Serializable;
+
 /**
  * Created by AndreLucas on 23/01/2018.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
     public String nomeCompleto;
     public String foto;
-    public int respostas;
+    public String token;
+    public Integer respostas;
 
-    public Usuario(String nomeCompleto, String foto) {
+    public Usuario(String nomeCompleto, String foto, String token) {
         this.nomeCompleto = nomeCompleto;
         this.foto = foto;
+        this.token = token;
     }
 
-    public Usuario(String nomeCompleto, String foto, int respostas) {
+    public Usuario(String nomeCompleto, String foto, Integer respostas) {
         this.nomeCompleto = nomeCompleto;
         this.foto = foto;
         this.respostas = respostas;
@@ -36,11 +40,19 @@ public class Usuario {
         this.foto = foto;
     }
 
-    public int getRespostas() {
+    public Integer getRespostas() {
         return respostas;
     }
 
-    public void setRespostas(int respostas) {
+    public void setRespostas(Integer respostas) {
         this.respostas = respostas;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

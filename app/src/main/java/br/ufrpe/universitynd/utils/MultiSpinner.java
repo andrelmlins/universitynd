@@ -77,6 +77,12 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
         return true;
     }
 
+    public void setSelecteds(int[] selected){
+        for (int i=0;i<selected.length;i++) {
+            this.selected[selected[i]] = true;
+        }
+    }
+
     public void setMultiSpinnerListener(MultiSpinnerListener listener) {
         this.listener = listener;
     }

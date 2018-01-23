@@ -2,6 +2,7 @@ package br.ufrpe.universitynd.utils;
 
 import android.content.Context;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -10,6 +11,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by AndreLucas on 29/11/2017.
@@ -44,7 +48,12 @@ public class Requests {
     }
 
     public void put(String url, JSONObject data, Response.Listener<JSONObject> callback, Response.ErrorListener error) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, ROOT+url, data, callback, error);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, ROOT+url, data, callback, error); /*{
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded";
+            }
+        };*/
         request.setRetryPolicy(new DefaultRetryPolicy(50000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mQueue.add(request);
     }
