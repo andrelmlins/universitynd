@@ -94,12 +94,12 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
 
     @Override
     public void onClickListener(View view, int position) {
-            Duvida duvida = this.duvidas.get(position);
-            DuvidaFragment fragment = new DuvidaFragment();
-            Bundle b = new Bundle();
-            b.putSerializable("duvida",duvida);
-            fragment.setArguments(b);
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
+        Duvida duvida = this.duvidas.get(position);
+        DuvidaFragment fragment = new DuvidaFragment();
+        Bundle b = new Bundle();
+        b.putSerializable("duvida",duvida);
+        fragment.setArguments(b);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
     }
 
 
