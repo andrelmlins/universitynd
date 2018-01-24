@@ -59,6 +59,7 @@ public class EditarDuvidaFragment extends Fragment implements View.OnClickListen
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.search).setVisible(false);
         menu.findItem(R.id.edit).setVisible(false);
+        menu.findItem(R.id.like).setVisible(false);
         super.onPrepareOptionsMenu(menu);
     }
 

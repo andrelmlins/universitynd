@@ -42,6 +42,7 @@ public class BuscaAvancadaFragment extends Fragment implements  RecyclerViewOnCl
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.search).setVisible(true);
         menu.findItem(R.id.edit).setVisible(false);
+        menu.findItem(R.id.like).setVisible(false);
         MenuItem mSearchMenuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
         searchView.setOnQueryTextListener(this);

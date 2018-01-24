@@ -46,7 +46,7 @@ import br.ufrpe.universitynd.utils.Requests;
  * Created by Danielly Queiroz on 24/11/2017.
  */
 
-public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClickListener, Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener {
+public class DuvidaFragment extends Fragment implements View.OnClickListener, MenuItem.OnMenuItemClickListener, Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener {
     private View rootView;
     private Duvida duvida;
     private Button btnResponder;
@@ -59,6 +59,7 @@ public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClick
     private TextView assunto;
     private TextView descricao;
     private TextView interessado;
+    private TextView countRespostas;
     private int gone = View.GONE;
     private int visible = View.VISIBLE;
     private boolean mostrarResposta = false;
@@ -80,12 +81,15 @@ public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClick
         SharedPreferences preferences = getActivity().getSharedPreferences("usuario",0);
         if(!this.duvida.getUsuario().getToken().equals(preferences.getString("token",""))){
             menu.findItem(R.id.edit).setVisible(false);
+            menu.findItem(R.id.like).setVisible(true);
         } else {
             menu.findItem(R.id.edit).setVisible(true);
+            menu.findItem(R.id.like).setVisible(false);
         }
         super.onPrepareOptionsMenu(menu);
 
         menu.findItem(R.id.edit).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.like).setOnMenuItemClickListener(this);
         super.onPrepareOptionsMenu(menu);
     }
 
@@ -108,6 +112,7 @@ public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClick
         this.descricao = (TextView) this.rootView.findViewById(R.id.DuvidaDescricao);
         this.assunto = (TextView) this.rootView.findViewById(R.id.DuvidaAssunto);
         this.interessado = (TextView) this.rootView.findViewById(R.id.DuvidaInteressado);
+        this.countRespostas = (TextView) this.rootView.findViewById(R.id.countRespostas);
 
         if(savedInstanteState!= null){
             mostrarResposta = savedInstanteState.getBoolean("mostrarResposta");
@@ -128,7 +133,7 @@ public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClick
 
         this.btnResponder.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 DuvidaFragment.this.llResposta.setVisibility(visible);
                 DuvidaFragment.this.btnResponder.setVisibility(gone);
                 mostrarResposta = true;
@@ -144,6 +149,8 @@ public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClick
                 mostrarResposta = false;
             }
         });
+
+        this.btnEnviar.setOnClickListener(this);
         //Seta os valores da Duvida
         this.nome.setText(this.duvida.getNome());
         this.data.setText(this.duvida.getDataFormatada(this.duvida.getData()));
@@ -204,25 +211,56 @@ public class DuvidaFragment extends Fragment implements MenuItem.OnMenuItemClick
     @Override
     public void onResponse(JSONObject response) {
         try {
-            JSONArray arrayDuvidas = response.getJSONArray("data");
-            JSONObject jsonDuvida;
-            for(int i = 0; i< arrayDuvidas.length(); i++){
-                jsonDuvida = arrayDuvidas.getJSONObject(i);
-
-                this.duvidas.add(new Duvida(jsonDuvida.getString("id"),jsonDuvida.getString("titulo"),
-                        new Date(f.parse(jsonDuvida.getString("created_at")).getTime()),
-                        jsonDuvida.getString("conteudo"),
-                        jsonDuvida.getString("interessado"),
-                        null,
-                        jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"),jsonDuvida.getString("usertoken"))));
-
+            JSONArray arrayRespostas = response.getJSONArray("data");
+            this.countRespostas.setText("Respostas: "+arrayRespostas.length());
+            JSONObject jsonResposta;
+            for(int i = 0; i< arrayRespostas.length(); i++){
+                jsonResposta = arrayRespostas.getJSONObject(i);
+                this.respostas.add(new Resposta(jsonResposta.getString("conteudo"),new Usuario(jsonResposta.getString("username"),jsonResposta.getString("userimage"),"")));
             }
-            this.adapter = new AdapterDuvidas(getActivity(), this.duvidas);
-            this.adapter.setRecyclerViewOnClickListenerHack(this);
+
+            this.adapter = new AdapterRespostas(getActivity(), this.respostas);
             this.myRecyclerView.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
             if(this.progress!=null) this.progress.dismiss();
-        } catch (JSONException |ParseException e) {
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        JSONObject resposta = new JSONObject();
+        SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
+        try {
+            resposta.put("conteudo",this.edtResposta.getText());
+            resposta.put("token",preferences.getString("token", ""));
+            requests.post("duvidas/" + this.duvida.getId() + "/respostas", resposta, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        respostas.add(new Resposta(response.getString("conteudo"),new Usuario(response.getString("username"),response.getString("userimage"),"")));
+                        adapter = new AdapterRespostas(getActivity(), respostas);
+                        myRecyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        if(progress!=null) progress.dismiss();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    DuvidaFragment.this.llResposta.setVisibility(gone);
+                    DuvidaFragment.this.btnResponder.setVisibility(visible);
+                    DuvidaFragment.this.edtResposta.setText("");
+                    mostrarResposta = false;
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+                    if(progress!=null) progress.dismiss();
+                }
+            });
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
