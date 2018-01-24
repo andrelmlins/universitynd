@@ -54,6 +54,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
     private TextView descricao;
     private TextView interessado;
     private TextView countRespostas;
+    private TextView curtidas;
     private int gone = View.GONE;
     private int visible = View.VISIBLE;
     private boolean mostrarResposta = false;
@@ -110,6 +111,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         this.assunto = (TextView) this.rootView.findViewById(R.id.DuvidaAssunto);
         this.interessado = (TextView) this.rootView.findViewById(R.id.DuvidaInteressado);
         this.countRespostas = (TextView) this.rootView.findViewById(R.id.countRespostas);
+        this.curtidas = (TextView) this.rootView.findViewById(R.id.curtidas);
 
         if(savedInstanteState!= null){
             mostrarResposta = savedInstanteState.getBoolean("mostrarResposta");
