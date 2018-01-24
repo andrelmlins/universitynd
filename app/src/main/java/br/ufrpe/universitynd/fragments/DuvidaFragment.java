@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,16 +25,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import br.ufrpe.universitynd.Interface.RecyclerViewOnClickListenerHack;
 import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
-import br.ufrpe.universitynd.adapters.AdapterDuvidas;
 import br.ufrpe.universitynd.adapters.AdapterRespostas;
 import br.ufrpe.universitynd.models.Duvida;
 import br.ufrpe.universitynd.models.Resposta;
@@ -68,6 +62,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
     private List<Resposta> respostas;
     private Requests requests;
     private ProgressDialog progress;
+    private Menu menu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +85,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
 
         menu.findItem(R.id.edit).setOnMenuItemClickListener(this);
         menu.findItem(R.id.like).setOnMenuItemClickListener(this);
+        this.menu = menu;
         super.onPrepareOptionsMenu(menu);
     }
 
@@ -98,7 +94,8 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         this.requests = Requests.getInstance(getActivity());
         this.duvida = (Duvida) this.getArguments().get("duvida");
         this.progress = ProgressDialog.show(getActivity(), "","Carregando as respostas...", true);
-        this.requests.getObject("duvidas/"+this.duvida.getId()+"/respostas",this,this);
+        SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
+        this.requests.getObject("duvidas/"+this.duvida.getId()+"?token="+preferences.getString("token",""),this,this);
 
         ((Main)getActivity()).setColor(this.duvida.getColor());
 
@@ -186,7 +183,38 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
             fragment.setArguments(b);
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
             return true;
-        } else {
+        } else if(item.getItemId()==R.id.like){
+            JSONObject curtir = new JSONObject();
+            SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
+            try {
+                curtir.put("token",preferences.getString("token", ""));
+                this.progress = ProgressDialog.show(getActivity(), "","Salvando Curtida...", true);
+                this.requests.post("duvidas/" + this.duvida.getId() + "/curtir", curtir, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if(response.getBoolean("curtir")){
+                                menu.findItem(R.id.like).setIcon(getResources().getDrawable(R.drawable.ic_thumb_white));
+                            } else {
+                                menu.findItem(R.id.like).setIcon(getResources().getDrawable(R.drawable.ic_thumb_border));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(progress!=null) progress.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+                        if(progress!=null) progress.dismiss();
+                    }
+                });
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return true;
+        }else {
             return false;
         }
     }
@@ -211,7 +239,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
     @Override
     public void onResponse(JSONObject response) {
         try {
-            JSONArray arrayRespostas = response.getJSONArray("data");
+            JSONArray arrayRespostas = response.getJSONArray("respostas");
             this.countRespostas.setText("Respostas: "+arrayRespostas.length());
             JSONObject jsonResposta;
             for(int i = 0; i< arrayRespostas.length(); i++){
@@ -222,6 +250,12 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
             this.adapter = new AdapterRespostas(getActivity(), this.respostas);
             this.myRecyclerView.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
+
+            if(response.getBoolean("curtir")){
+                menu.findItem(R.id.like).setIcon(getResources().getDrawable(R.drawable.ic_thumb_white));
+            } else {
+                menu.findItem(R.id.like).setIcon(getResources().getDrawable(R.drawable.ic_thumb_border));
+            }
             if(this.progress!=null) this.progress.dismiss();
         } catch (JSONException e) {
             e.printStackTrace();
