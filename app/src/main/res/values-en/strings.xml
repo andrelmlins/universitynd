@@ -32,6 +32,7 @@
     <string name="myQues">My Questions</string>
     <string name="sair">Log out</string>
     <string name="enviar">Send Question</string>
+    <string name="enviar_resposta">Send Answer</string>
     <string name="prof">Professor</string>
     <string name="coord">Department</string>
     <string name="ranking">Ranking</string>

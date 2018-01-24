@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,11 +44,11 @@ import br.ufrpe.universitynd.utils.Requests;
 public class DuvidaFragment extends Fragment implements View.OnClickListener, MenuItem.OnMenuItemClickListener, Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener {
     private View rootView;
     private Duvida duvida;
-    private Button btnResponder;
+    private LinearLayout btnResponder;
     private LinearLayout llResposta;
     private EditText edtResposta;
-    private Button btnEnviar;
-    private Button btnCancelar;
+    private ImageButton btnEnviar;
+    private LinearLayout btnCancelar;
     private TextView nome;
     private TextView data;
     private TextView assunto;
@@ -100,11 +101,11 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
 
         ((Main)getActivity()).setColor(this.duvida.getColor());
 
-        this.btnResponder = (Button) this.rootView.findViewById(R.id.btnShowResposta);
+        this.btnResponder = (LinearLayout) this.rootView.findViewById(R.id.btnShowResposta);
         this.llResposta = (LinearLayout) this.rootView.findViewById(R.id.llResposta);
         this.edtResposta = (EditText) this.rootView.findViewById(R.id.edtResposta);
-        this.btnEnviar = (Button) this.rootView.findViewById(R.id.btnEnviar);
-        this.btnCancelar = (Button) this.rootView.findViewById(R.id.btnCancelar);
+        this.btnEnviar = (ImageButton) this.rootView.findViewById(R.id.btnEnviar);
+        this.btnCancelar = (LinearLayout) this.rootView.findViewById(R.id.btnCancelar);
         this.nome = (TextView) this.rootView.findViewById(R.id.DuvidaNome);
         this.data = (TextView) this.rootView.findViewById(R.id.DuvidaData);
         this.descricao = (TextView) this.rootView.findViewById(R.id.DuvidaDescricao);
@@ -121,7 +122,6 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 DuvidaFragment.this.btnResponder.setVisibility(gone);
                 DuvidaFragment.this.edtResposta.setText(savedInstanteState.getString("edtResposta"));
 
-
            }else{
                 DuvidaFragment.this.llResposta.setVisibility(gone);
                 DuvidaFragment.this.btnResponder.setVisibility(visible);
@@ -136,6 +136,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 DuvidaFragment.this.llResposta.setVisibility(visible);
                 DuvidaFragment.this.btnResponder.setVisibility(gone);
                 mostrarResposta = true;
+                DuvidaFragment.this.edtResposta.setFocusable(true);
             }
         });
 
@@ -146,6 +147,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 DuvidaFragment.this.btnResponder.setVisibility(visible);
                 DuvidaFragment.this.edtResposta.setText("");
                 mostrarResposta = false;
+                DuvidaFragment.this.edtResposta.setFocusable(false);
             }
         });
 
@@ -197,8 +199,10 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                         try {
                             if(response.getBoolean("curtir")){
                                 menu.findItem(R.id.like).setIcon(getResources().getDrawable(R.drawable.ic_thumb_white));
+                                curtidas.setText((Integer.parseInt(curtidas.getText()+"")+1)+"");
                             } else {
                                 menu.findItem(R.id.like).setIcon(getResources().getDrawable(R.drawable.ic_thumb_border));
+                                curtidas.setText((Integer.parseInt(curtidas.getText()+"")-1)+"");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -243,6 +247,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         try {
             JSONArray arrayRespostas = response.getJSONArray("respostas");
             this.countRespostas.setText("Respostas: "+arrayRespostas.length());
+            this.curtidas.setText(response.getString("count_curtidas"));
             JSONObject jsonResposta;
             for(int i = 0; i< arrayRespostas.length(); i++){
                 jsonResposta = arrayRespostas.getJSONObject(i);
@@ -288,6 +293,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                     DuvidaFragment.this.btnResponder.setVisibility(visible);
                     DuvidaFragment.this.edtResposta.setText("");
                     mostrarResposta = false;
+                    DuvidaFragment.this.edtResposta.setFocusable(false);
                 }
             }, new Response.ErrorListener() {
                 @Override
