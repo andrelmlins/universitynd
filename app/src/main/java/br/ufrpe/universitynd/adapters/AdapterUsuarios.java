@@ -49,7 +49,7 @@ public class AdapterUsuarios extends BaseAdapter {
         ImageView image = (ImageView) view.findViewById(R.id.imagem);
 
         nome.setText(u.getNomeCompleto());
-        quantidade.setText("Respostas: "+u.getRespostas());
+        quantidade.setText("Pontuação: "+u.getPontuacao());
         posicao.setText((position+1)+"");
         Picasso.with(view.getContext()).load(u.getFoto()).into(image);
 

@@ -10,7 +10,7 @@ public class Usuario implements Serializable{
     public String nomeCompleto;
     public String foto;
     public String token;
-    public Integer respostas;
+    public Integer pontuacao;
 
     public Usuario(String nomeCompleto, String foto, String token) {
         this.nomeCompleto = nomeCompleto;
@@ -18,10 +18,10 @@ public class Usuario implements Serializable{
         this.token = token;
     }
 
-    public Usuario(String nomeCompleto, String foto, Integer respostas) {
+    public Usuario(String nomeCompleto, String foto, Integer pontuacao) {
         this.nomeCompleto = nomeCompleto;
         this.foto = foto;
-        this.respostas = respostas;
+        this.pontuacao = pontuacao;
     }
 
     public String getNomeCompleto() {
@@ -40,12 +40,12 @@ public class Usuario implements Serializable{
         this.foto = foto;
     }
 
-    public Integer getRespostas() {
-        return respostas;
+    public Integer getPontuacao() {
+        return pontuacao;
     }
 
-    public void setRespostas(Integer respostas) {
-        this.respostas = respostas;
+    public void setPontuacao(Integer pontuacao) {
+        this.pontuacao = pontuacao;
     }
 
     public String getToken() {

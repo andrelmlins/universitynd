@@ -83,11 +83,11 @@ public class RankingFragment extends Fragment implements Response.ErrorListener,
     @Override
     public void onResponse(JSONObject response) {
         try {
-            JSONArray usuarios = response.getJSONArray("data");
+            JSONArray usuarios = response.getJSONArray("usuarios");
             JSONObject jsonDuvida;
-            for(int i = 0; i< usuarios.length()-1; i++){
+            for(int i = 0; i< usuarios.length(); i++){
                 jsonDuvida = usuarios.getJSONObject(i);
-                this.usuarios.add(new Usuario(jsonDuvida.getString("fullname"),jsonDuvida.getString("picture"),jsonDuvida.getInt("auxrespostas")));
+                this.usuarios.add(new Usuario(jsonDuvida.getString("fullname"),jsonDuvida.getString("picture"),jsonDuvida.getInt("count")));
             }
             this.adapter = new AdapterUsuarios(getActivity(), this.usuarios);
             this.listView.setAdapter(adapter);
