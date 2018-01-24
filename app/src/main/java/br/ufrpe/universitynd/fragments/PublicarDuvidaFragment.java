@@ -98,7 +98,7 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String assunto = parent.getSelectedItem().toString();
-        if(assunto.equals("Disciplina") || assunto.equals("Dispensa de Disciplina")){
+        if(assunto.equals(getString(R.string.disciplinaS)) || assunto.equals(getString(R.string.dispensaDisciplina))){
             disciplina_layout.setVisibility(View.VISIBLE);
         } else {
             disciplina_layout.setVisibility(View.GONE);
@@ -112,7 +112,7 @@ public class PublicarDuvidaFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
 
         // teste duvidas
 //        String[] dis = {this.disciplina.getSelectedItem().toString()};

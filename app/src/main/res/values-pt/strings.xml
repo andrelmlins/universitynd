@@ -45,19 +45,33 @@
     <string name="duvidas">Dúvidas</string>
     <string name="respostas">Respostas</string>
 
-    <string-array name="Categorias">
-        <item>Dispensa de Disciplina</item>
-        <item>Estágio</item>
-        <item>Matrícula</item>
-        <item>SECOMP</item>
-        <item>Disciplina</item>
-    </string-array>
-    <string-array name="TipoUsuario">
-        <item>Aluno</item>
-        <item>Coordenação</item>
-        <item>Professor</item>
-        <item>Secretária</item>
-    </string-array>
+    <string name="erroC">Erro de conexão :)</string>
+    <string name="carregandoD">Carregengo dúvidas...</string>
+    <string name="carregandoP">Carregando perfil...</string>
+    <string name="carregandoR">Carregando ranking...</string>
+    <string name="carregandoRes">Carregando as respostas...</string>
+
+    <string name="dispensaDisciplina">Dispensa de Disciplina</string>
+    <string name="estágio">Estágio</string>
+    <string name="matricula">Matrícula</string>
+    <string name="secomp">SECOMP</string>
+    <string name="disciplinaS">Disciplina</string>
+
+    <string name="resp">Respostas:</string>
+
+    <!--<string-array name="Categorias">-->
+        <!--<item>Dispensa de Disciplina</item>-->
+        <!--<item>Estágio</item>-->
+        <!--<item>Matrícula</item>-->
+        <!--<item>SECOMP</item>-->
+        <!--<item>Disciplina</item>-->
+    <!--</string-array>-->
+    <!--<string-array name="TipoUsuario">-->
+        <!--<item>Aluno</item>-->
+        <!--<item>Coordenação</item>-->
+        <!--<item>Professor</item>-->
+        <!--<item>Secretária</item>-->
+    <!--</string-array>-->
 
     <string-array name="Interessados">
         <item>Todos</item>

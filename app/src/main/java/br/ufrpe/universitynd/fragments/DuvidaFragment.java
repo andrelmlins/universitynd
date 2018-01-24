@@ -66,6 +66,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
     private ProgressDialog progress;
     private Menu menu;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +96,8 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         this.rootView = inflater.inflate(R.layout.duvida_fragment,container,false);
         this.requests = Requests.getInstance(getActivity());
         this.duvida = (Duvida) this.getArguments().get("duvida");
-        this.progress = ProgressDialog.show(getActivity(), "","Carregando as respostas...", true);
+
+        this.progress = ProgressDialog.show(getActivity(), "",getString(R.string.carregandoRes), true);
         SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
         this.requests.getObject("duvidas/"+this.duvida.getId()+"?token="+preferences.getString("token",""),this,this);
 
@@ -212,7 +214,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
                         if(progress!=null) progress.dismiss();
                     }
                 });
@@ -238,7 +240,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
         if(this.progress!=null) this.progress.dismiss();
     }
 
@@ -246,7 +248,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
     public void onResponse(JSONObject response) {
         try {
             JSONArray arrayRespostas = response.getJSONArray("respostas");
-            this.countRespostas.setText("Respostas: "+arrayRespostas.length());
+            this.countRespostas.setText(R.string.resp +arrayRespostas.length());
             this.curtidas.setText(response.getString("count_curtidas"));
             JSONObject jsonResposta;
             for(int i = 0; i< arrayRespostas.length(); i++){
@@ -298,7 +300,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
                     if(progress!=null) progress.dismiss();
                 }
             });
