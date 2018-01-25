@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:padding="8dp">
         <android.support.v7.widget.CardView
@@ -34,6 +35,8 @@
                         android:textStyle="bold"
                         android:text="" />
                     <LinearLayout
+                        android:id="@+id/btnCurtidas"
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -217,17 +220,47 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
+    </ScrollView>
     <TextView
         android:id="@+id/countRespostas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-5dp"
         android:textAlignment="center"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listaRespostas"
-        android:scrollbars="vertical"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="1dp"
-        android:layout_height="match_parent" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listaRespostas"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="1dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:id="@+id/btnTodasRespostas"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="12dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="true">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_message" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_dark"
+                android:text="@string/todasrespostas" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
-</ScrollView>

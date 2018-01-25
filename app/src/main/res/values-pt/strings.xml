@@ -44,6 +44,8 @@
     <string name="conteudo">Conteúdo</string>
     <string name="duvidas">Dúvidas</string>
     <string name="respostas">Respostas</string>
+    <string name="todasrespostas">Todas as Respostas</string>
+    <string name="curtidas">Curtidas</string>
 
     <string-array name="Categorias">
         <item>Dispensa de Disciplina</item>

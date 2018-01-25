@@ -49,6 +49,8 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
     private EditText edtResposta;
     private ImageButton btnEnviar;
     private LinearLayout btnCancelar;
+    private LinearLayout btnTodasRespostas;
+    private LinearLayout btnCurtidas;
     private TextView nome;
     private TextView data;
     private TextView assunto;
@@ -106,6 +108,8 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         this.edtResposta = (EditText) this.rootView.findViewById(R.id.edtResposta);
         this.btnEnviar = (ImageButton) this.rootView.findViewById(R.id.btnEnviar);
         this.btnCancelar = (LinearLayout) this.rootView.findViewById(R.id.btnCancelar);
+        this.btnTodasRespostas = (LinearLayout) this.rootView.findViewById(R.id.btnTodasRespostas);
+        this.btnCurtidas = (LinearLayout) this.rootView.findViewById(R.id.btnCurtidas);
         this.nome = (TextView) this.rootView.findViewById(R.id.DuvidaNome);
         this.data = (TextView) this.rootView.findViewById(R.id.DuvidaData);
         this.descricao = (TextView) this.rootView.findViewById(R.id.DuvidaDescricao);
@@ -127,7 +131,6 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 DuvidaFragment.this.btnResponder.setVisibility(visible);
                 DuvidaFragment.this.edtResposta.setText("");
            }
-
         }
 
         this.btnResponder.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +139,6 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 DuvidaFragment.this.llResposta.setVisibility(visible);
                 DuvidaFragment.this.btnResponder.setVisibility(gone);
                 mostrarResposta = true;
-                DuvidaFragment.this.edtResposta.setFocusable(true);
             }
         });
 
@@ -147,7 +149,28 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 DuvidaFragment.this.btnResponder.setVisibility(visible);
                 DuvidaFragment.this.edtResposta.setText("");
                 mostrarResposta = false;
-                DuvidaFragment.this.edtResposta.setFocusable(false);
+            }
+        });
+
+        this.btnTodasRespostas.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                RespostasFragment fragment = new RespostasFragment();
+                Bundle b = new Bundle();
+                b.putSerializable("duvida", duvida);
+                fragment.setArguments(b);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
+            }
+        });
+
+        this.btnCurtidas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CurtidasFragment fragment = new CurtidasFragment();
+                Bundle b = new Bundle();
+                b.putSerializable("duvida", duvida);
+                fragment.setArguments(b);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
             }
         });
 
@@ -293,7 +316,6 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                     DuvidaFragment.this.btnResponder.setVisibility(visible);
                     DuvidaFragment.this.edtResposta.setText("");
                     mostrarResposta = false;
-                    DuvidaFragment.this.edtResposta.setFocusable(false);
                 }
             }, new Response.ErrorListener() {
                 @Override

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.ufrpe.universitynd.Interface.EndlessRecyclerViewScrollListener;
 import br.ufrpe.universitynd.Interface.RecyclerViewOnClickListenerHack;
 import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
@@ -45,6 +47,7 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
     private List<Duvida> duvidas;
     private Requests requests;
     private ProgressDialog progress;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,11 +71,14 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
         this.requests = Requests.getInstance(getActivity());
 
         this.duvidas = new ArrayList<Duvida>();
+        this.adapter = new AdapterDuvidas(getActivity(), this.duvidas);
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
         this.myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager lls = new LinearLayoutManager(getActivity());
         lls.setOrientation(LinearLayoutManager.VERTICAL);
         this.myRecyclerView.setLayoutManager(lls);
+        this.adapter.setRecyclerViewOnClickListenerHack(this);
+        this.myRecyclerView.setAdapter(this.adapter);
 
         this.progress = ProgressDialog.show(getActivity(), "","Carregando as dúvidas...", true);
         requests.getObject("duvidas",this,this);
@@ -98,6 +104,7 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
     @Override
     public void onResponse(JSONObject response) {
         try {
+            rootView.findViewById(R.id.progress).setVisibility(View.GONE);
             SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
 
             JSONArray arrayDuvidas = response.getJSONArray("data");
@@ -113,10 +120,11 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
                         jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"),jsonDuvida.getString("usertoken"))));
 
             }
-            this.adapter = new AdapterDuvidas(getActivity(), this.duvidas);
-            this.adapter.setRecyclerViewOnClickListenerHack(this);
-            this.myRecyclerView.setAdapter(this.adapter);
-            this.adapter.notifyDataSetChanged();
+            if(response.getString("from")!="null") {
+                this.adapter.reload();
+                loadPage(response.getInt("from"), ((int) Math.ceil((float) response.getInt("total") / response.getInt("per_page"))));
+                this.adapter.notifyDataSetChanged();
+            }
             if(this.progress!=null) this.progress.dismiss();
         } catch (JSONException |ParseException e) {
             e.printStackTrace();
@@ -132,5 +140,18 @@ public class DuvidasFragment extends Fragment implements RecyclerViewOnClickList
     public boolean onQueryTextChange(String newText) {
         this.adapter.filter(newText);
         return true;
+    }
+
+    public void loadPage(int page,int totalPages){
+        if(page==1) {
+            this.myRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(totalPages, myRecyclerView) {
+                @Override
+                public boolean onLoadMore(int page, int totalItemsCount) {
+                    rootView.findViewById(R.id.progress).setVisibility(View.VISIBLE);
+                    requests.getObject("duvidas?page=" + page, DuvidasFragment.this, DuvidasFragment.this);
+                    return true;
+                }
+            });
+        }
     }
 }

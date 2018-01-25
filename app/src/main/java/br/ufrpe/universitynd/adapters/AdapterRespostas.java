@@ -38,6 +38,10 @@ public class AdapterRespostas extends RecyclerView.Adapter<AdapterRespostas.MyVi
         this.arraylist.addAll(this.respostas);
     }
 
+    public void reload(){
+        this.arraylist.addAll(this.respostas);
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) { // criar uma nova view so quando for necessário
         View v = mLayoutInflater.inflate(R.layout.adapter_respostas, viewGroup, false);

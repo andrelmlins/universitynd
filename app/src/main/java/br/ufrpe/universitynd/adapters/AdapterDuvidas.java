@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +41,10 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
         this.context = context;
         this.mLayoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.arraylist = new ArrayList<Duvida>();
+        this.arraylist.addAll(this.mDuvidas);
+    }
+
+    public void reload(){
         this.arraylist.addAll(this.mDuvidas);
     }
 

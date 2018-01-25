@@ -61,7 +61,6 @@ public class Duvida implements Serializable {
     public String getDataFormatada(Date data){
         Date dataFormatada = data;
         return DateFormat.getInstance().format(dataFormatada);
-
     }
 
     public String getInteressado() {
