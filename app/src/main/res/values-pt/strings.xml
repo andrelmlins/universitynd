@@ -51,6 +51,8 @@
     <string name="carregandoR">Carregando ranking...</string>
     <string name="carregandoRes">Carregando as respostas...</string>
 
+    <string name="login">Realizando Login, aguarde...</string>
+
     <string name="dispensaDisciplina">Dispensa de Disciplina</string>
     <string name="estágio">Estágio</string>
     <string name="matricula">Matrícula</string>

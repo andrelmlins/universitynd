@@ -57,6 +57,7 @@
     <string name="carregandoP">Load profile...</string>
     <string name="carregandoR">Load ranking...</string>
     <string name="carregandoRes">Load answers...</string>
+    <string name="login">Login in progress...</string>
 
     <string name="resp">Answers:</string>
 

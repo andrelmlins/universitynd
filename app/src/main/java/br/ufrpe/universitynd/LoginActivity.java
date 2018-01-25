@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
     @Override
     public void onClick(View v) {
-        this.progress = ProgressDialog.show(this, "","Realizando Login, aguarde...", true);
+        this.progress = ProgressDialog.show(this, "",getString(R.string.login), true);
         JSONObject j = new JSONObject();
         try {
             j.put("username",String.valueOf(this.username.getText()));
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
     @Override
     public void onErrorResponse(VolleyError error) {
         if(this.progress!=null) this.progress.dismiss();
-        Toast.makeText(this, "Erro de Conexão :(", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.erroC, Toast.LENGTH_SHORT).show();
 
         // TESTE LOGIN FAKE
         //Teste.login(this,this.progress);
