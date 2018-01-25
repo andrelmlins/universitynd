@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -77,6 +76,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         menu.findItem(R.id.search).setVisible(false);
 
         SharedPreferences preferences = getActivity().getSharedPreferences("usuario",0);
+
         if(!this.duvida.getUsuario().getToken().equals(preferences.getString("token",""))){
             menu.findItem(R.id.edit).setVisible(false);
             menu.findItem(R.id.like).setVisible(true);
@@ -99,6 +99,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
 
         this.progress = ProgressDialog.show(getActivity(), "",getString(R.string.carregandoRes), true);
         SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
+        //Para verificar o usuário logado
         this.requests.getObject("duvidas/"+this.duvida.getId()+"?token="+preferences.getString("token",""),this,this);
 
         ((Main)getActivity()).setColor(this.duvida.getColor());
@@ -116,6 +117,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
         this.countRespostas = (TextView) this.rootView.findViewById(R.id.countRespostas);
         this.curtidas = (TextView) this.rootView.findViewById(R.id.curtidas);
 
+        //salvar o estado
         if(savedInstanteState!= null){
             mostrarResposta = savedInstanteState.getBoolean("mostrarResposta");
 
