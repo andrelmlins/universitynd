@@ -60,7 +60,7 @@ public class MeuPerfilFragment extends Fragment implements Response.ErrorListene
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.perfil_fragment,container,false);
-        this.progress = ProgressDialog.show(getActivity(), "","Carregando perfil...", true);
+        this.progress = ProgressDialog.show(getActivity(), "", getString(R.string.carregandoP), true);
         getActivity().setTitle(R.string.perfil);
 
         this.requests = Requests.getInstance(getActivity());
@@ -83,7 +83,7 @@ public class MeuPerfilFragment extends Fragment implements Response.ErrorListene
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
         if(this.progress!=null) this.progress.dismiss();
     }
 

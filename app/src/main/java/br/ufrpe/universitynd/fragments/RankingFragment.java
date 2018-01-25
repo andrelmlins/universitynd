@@ -69,14 +69,14 @@ public class RankingFragment extends Fragment implements Response.ErrorListener,
         this.usuarios = new ArrayList<>();
         this.listView = (ListView) rootView.findViewById(R.id.list);
 
-        this.progress = ProgressDialog.show(getActivity(), "","Carregando ranking...", true);
+        this.progress = ProgressDialog.show(getActivity(), "",getString(R.string.carregandoR), true);
         requests.getObject("usuarios/ranking",this,this);
         return this.rootView;
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
         if(this.progress!=null) this.progress.dismiss();
     }
 

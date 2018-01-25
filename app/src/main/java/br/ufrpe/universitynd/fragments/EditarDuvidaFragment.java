@@ -85,7 +85,7 @@ public class EditarDuvidaFragment extends Fragment implements View.OnClickListen
         titulo.setText(duvida.getNome());
         assunto.setSelection(new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.Categorias))).indexOf(duvida.getAssunto()));
         interessado.setSelection(new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.Categorias))).indexOf(duvida.getInteressado()));
-        if(duvida.getAssunto().equals("Disciplina") || duvida.getAssunto().equals("Dispensa de Disciplina")){
+        if(assunto.equals(getString(R.string.disciplinaS)) || assunto.equals(getString(R.string.dispensaDisciplina))){
             disciplina_layout.setVisibility(View.VISIBLE);
         } else {
             disciplina_layout.setVisibility(View.GONE);
@@ -116,7 +116,7 @@ public class EditarDuvidaFragment extends Fragment implements View.OnClickListen
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String assunto = parent.getSelectedItem().toString();
-        if(assunto.equals("Disciplina") || assunto.equals("Dispensa de Disciplina")){
+        if(assunto.equals(getString(R.string.disciplinaS)) || assunto.equals(getString(R.string.dispensaDisciplina))){
             disciplina_layout.setVisibility(View.VISIBLE);
         } else {
             disciplina_layout.setVisibility(View.GONE);
@@ -130,7 +130,7 @@ public class EditarDuvidaFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
     }
 
     @Override

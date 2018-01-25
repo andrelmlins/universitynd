@@ -67,7 +67,7 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvidas_fragment,container,false);
-        this.progress = ProgressDialog.show(getActivity(), "","Carregando as dúvidas...", true);
+        this.progress = ProgressDialog.show(getActivity(), "",getString(R.string.carregandoD), true);
         getActivity().setTitle(R.string.myQues);
         ((Main)getActivity()).setColor();
         this.requests = Requests.getInstance(getActivity());
@@ -100,7 +100,7 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
         if(this.progress!=null) this.progress.dismiss();
     }
 

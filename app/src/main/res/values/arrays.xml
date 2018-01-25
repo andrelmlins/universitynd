@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Categorias">
+    <item>@string/dispensaDisciplina</item>
+    <item>@string/estágio</item>
+    <item>@string/matricula</item>
+    <item>@string/secomp</item>
+    <item>@string/disciplinaS</item>
+    </string-array>
+</resources>

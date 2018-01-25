@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.home_fragment,container,false);
-        getActivity().setTitle("UniversityNd");
+        getActivity().setTitle(R.string.app_name);
         ((Main)getActivity()).setColor();
         this.publique_duvida = (CardView) this.rootView.findViewById(R.id.publique_duvida);
         this.ultimas_duvidas = (CardView) this.rootView.findViewById(R.id.ultimas_duvidas);
