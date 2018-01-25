@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "776517056058",
+    "firebase_url": "https://universitynd-c4642.firebaseio.com",
+    "project_id": "universitynd-c4642",
+    "storage_bucket": "universitynd-c4642.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776517056058:android:051ae7681b1484b6",
+        "android_client_info": {
+          "package_name": "br.ufrpe.universitynd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776517056058-pnlo9lc4bjobvj4tvn7k2nu3ilh0idn4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.ufrpe.universitynd",
+            "certificate_hash": "1aaebf122e05ac22af8592be8cdc7af9bbf1551b"
+          }
+        },
+        {
+          "client_id": "776517056058-aj2omin2uueuvvhspfaaeaqq5nk9kler.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX1vUnDs4rAg4OLHatd_60PwkFoZQ47HI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776517056058-aj2omin2uueuvvhspfaaeaqq5nk9kler.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

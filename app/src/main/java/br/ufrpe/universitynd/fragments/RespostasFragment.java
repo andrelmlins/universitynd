@@ -1,7 +1,6 @@
 package br.ufrpe.universitynd.fragments;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,42 +12,42 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.ufrpe.universitynd.Interface.EndlessRecyclerViewScrollListener;
-import br.ufrpe.universitynd.Interface.RecyclerViewOnClickListenerHack;
 import br.ufrpe.universitynd.Main;
 import br.ufrpe.universitynd.R;
-import br.ufrpe.universitynd.adapters.AdapterDuvidas;
+import br.ufrpe.universitynd.adapters.AdapterRespostas;
+import br.ufrpe.universitynd.adapters.AdapterUsuarios;
 import br.ufrpe.universitynd.models.Duvida;
+import br.ufrpe.universitynd.models.Resposta;
 import br.ufrpe.universitynd.models.Usuario;
 import br.ufrpe.universitynd.utils.Requests;
 
 /**
- * Created by AndreLucas on 23/01/2018.
+ * Created by AndreLucas on 24/01/2018.
  */
 
-public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnClickListenerHack, Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener{
+public class RespostasFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject>, SearchView.OnQueryTextListener {
     private View rootView;
-    private RecyclerView myRecyclerView;
-    private AdapterDuvidas adapter;
-    private List<Duvida> duvidas;
+    private AdapterRespostas adapter;
+    private List<Resposta> respostas;
     private Requests requests;
     private ProgressDialog progress;
+    private RecyclerView myRecyclerView;
+    private Duvida duvida;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,60 +66,40 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanteState){
         this.rootView = inflater.inflate(R.layout.duvidas_fragment,container,false);
-        this.progress = ProgressDialog.show(getActivity(), "",getString(R.string.carregandoD), true);
-        getActivity().setTitle(R.string.myQues);
+        this.duvida = (Duvida) this.getArguments().get("duvida");
+        getActivity().setTitle(getString(R.string.respostas)+" - "+this.duvida.getNome());
         ((Main)getActivity()).setColor();
         this.requests = Requests.getInstance(getActivity());
 
-        this.duvidas = new ArrayList<Duvida>();
-        this.adapter = new AdapterDuvidas(getActivity(), this.duvidas);
+        this.respostas = new ArrayList<>();
+        this.adapter = new AdapterRespostas(getActivity(),this.respostas);
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
         this.myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager lls = new LinearLayoutManager(getActivity());
         lls.setOrientation(LinearLayoutManager.VERTICAL);
         this.myRecyclerView.setLayoutManager(lls);
-        this.adapter.setRecyclerViewOnClickListenerHack(this);
         this.myRecyclerView.setAdapter(this.adapter);
 
-        SharedPreferences preferences = getActivity().getSharedPreferences("usuario",0);
-        requests.getObject("duvidas/usuario/"+preferences.getString("token",""),this,this);
+        this.progress = ProgressDialog.show(getActivity(), "","Carregando respostas...", true);
+        requests.getObject("duvidas/"+(this.duvida.getId())+"/respostas",this,this);
         return this.rootView;
     }
 
     @Override
-    public void onClickListener(View view, int posicao) {
-        Duvida duvida = this.duvidas.get(posicao);
-        DuvidaFragment fragment = new DuvidaFragment();
-        Bundle b = new Bundle();
-        b.putSerializable("duvida", duvida);
-        fragment.setArguments(b);
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).addToBackStack("").commit();
-
-    }
-
-    @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Erro de Conexão :)", Toast.LENGTH_SHORT).show();
         if(this.progress!=null) this.progress.dismiss();
     }
 
     @Override
     public void onResponse(JSONObject response) {
         try {
-            SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
-
-            JSONArray arrayDuvidas = response.getJSONArray("data");
-            JSONObject jsonDuvida;
-            for(int i = 0; i< arrayDuvidas.length(); i++){
-                jsonDuvida = arrayDuvidas.getJSONObject(i);
-
-                this.duvidas.add(new Duvida(jsonDuvida.getString("id"),jsonDuvida.getString("titulo"),
-                        new Date(f.parse(jsonDuvida.getString("created_at")).getTime()),
-                        jsonDuvida.getString("conteudo"),
-                        jsonDuvida.getString("interessado"),
-                        null,
-                        jsonDuvida.getString("assunto"),new Usuario(jsonDuvida.getString("username"),jsonDuvida.getString("userimage"),jsonDuvida.getString("usertoken"))));
-
+            rootView.findViewById(R.id.progress).setVisibility(View.GONE);
+            JSONArray arrayRespostas = response.getJSONArray("data");
+            JSONObject jsonResposta;
+            for(int i = 0; i< arrayRespostas.length(); i++){
+                jsonResposta = arrayRespostas.getJSONObject(i);
+                this.respostas.add(new Resposta(jsonResposta.getString("conteudo"),new Usuario(jsonResposta.getString("username"),jsonResposta.getString("userimage"),"")));
             }
             if(response.getString("from")!="null") {
                 this.adapter.reload();
@@ -128,7 +107,8 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
                 this.adapter.notifyDataSetChanged();
             }
             if(this.progress!=null) this.progress.dismiss();
-        } catch (JSONException |ParseException e) {
+        } catch (JSONException e) {
+            Log.e("TESTE",e.getMessage());
             e.printStackTrace();
         }
     }
@@ -150,8 +130,7 @@ public class MinhasDuvidasFragment extends Fragment implements RecyclerViewOnCli
                 @Override
                 public boolean onLoadMore(int page, int totalItemsCount) {
                     rootView.findViewById(R.id.progress).setVisibility(View.VISIBLE);
-                    SharedPreferences preferences = getActivity().getSharedPreferences("usuario",0);
-                    requests.getObject("duvidas/usuario/"+preferences.getString("token","")+"?page="+page, MinhasDuvidasFragment.this, MinhasDuvidasFragment.this);
+                    requests.getObject("duvidas/"+(duvida.getId())+"/respostas?page=" + page, RespostasFragment.this, RespostasFragment.this);
                     return true;
                 }
             });

@@ -44,6 +44,8 @@
     <string name="conteudo">Content</string>
     <string name="duvidas">Questions</string>
     <string name="respostas">Answers</string>
+    <string name="todasrespostas">All Answers</string>
+    <string name="curtidas">Likes</string>
 
     <string name="dispensaDisciplina">Exemption from Discipline</string>
     <string name="estágio">Intership</string>
