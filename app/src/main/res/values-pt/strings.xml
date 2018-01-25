@@ -48,6 +48,7 @@
     <string name="curtidas">Curtidas</string>
 
     <string name="erroC">Erro de conexão :)</string>
+    <string name="erroD">Preencha todos os campos! :)</string>
     <string name="carregandoD">Carregengo dúvidas...</string>
     <string name="carregandoP">Carregando perfil...</string>
     <string name="carregandoR">Carregando ranking...</string>
@@ -63,13 +64,15 @@
 
     <string name="resp">Respostas:</string>
 
-    <!--<string-array name="Categorias">-->
-        <!--<item>Dispensa de Disciplina</item>-->
-        <!--<item>Estágio</item>-->
-        <!--<item>Matrícula</item>-->
-        <!--<item>SECOMP</item>-->
-        <!--<item>Disciplina</item>-->
-    <!--</string-array>-->
+    <string-array name="Categorias">
+        <item>Dispensa de Disciplina</item>
+        <item>Estágio</item>
+        <item>Matrícula</item>
+        <item>SECOMP</item>
+        <item>Disciplina</item>
+        <item>Carga Horária</item>
+        <item>Outros</item>
+    </string-array>
     <!--<string-array name="TipoUsuario">-->
         <!--<item>Aluno</item>-->
         <!--<item>Coordenação</item>-->

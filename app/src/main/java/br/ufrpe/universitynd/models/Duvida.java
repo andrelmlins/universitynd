@@ -95,9 +95,13 @@ public class Duvida implements Serializable {
         } else if(this.assunto.equals("Estágio") || this.assunto.equals("Intership")){
             return new String[]{"#673ab7", "#5e35b1"};
         } else if(this.assunto.equals("Matrícula") || this.assunto.equals("Registration")){
-            return new String[]{"#795548", "#6d4c41"};
+            return new String[]{"#ef6c00", "#e65100"};
         } else if(this.assunto.equals("SECOMP")){
             return new String[]{"#4caf50", "#43a047"};
+        } else if(this.assunto.equals("Carga Horária") || this.assunto.equals("Workload")){
+            return new String[]{"#ec407a", "#e91e63"};
+        } else if(this.assunto.equals("Outros") || this.assunto.equals("Others")){
+            return new String[]{"#78909c", "#607d8b"};
         } else {
             return new String[]{"#ca2129", "#a11a20"};
         }

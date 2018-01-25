@@ -52,6 +52,7 @@ public class MeuPerfilFragment extends Fragment implements Response.ErrorListene
     }
 
     public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.delete).setVisible(false);
         menu.findItem(R.id.search).setVisible(false);
         menu.findItem(R.id.edit).setVisible(false);
         menu.findItem(R.id.like).setVisible(false);

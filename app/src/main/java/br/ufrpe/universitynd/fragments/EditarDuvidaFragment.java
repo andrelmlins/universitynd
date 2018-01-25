@@ -57,6 +57,7 @@ public class EditarDuvidaFragment extends Fragment implements View.OnClickListen
     }
 
     public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.delete).setVisible(false);
         menu.findItem(R.id.search).setVisible(false);
         menu.findItem(R.id.edit).setVisible(false);
         menu.findItem(R.id.like).setVisible(false);
@@ -99,17 +100,21 @@ public class EditarDuvidaFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         JSONObject duvida = new JSONObject();
         SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
-        try {
-            duvida.put("titulo",this.titulo.getText());
-            duvida.put("conteudo",this.conteudo.getText());
-            duvida.put("assunto",this.assunto.getSelectedItem().toString());
-            duvida.put("disciplina",this.disciplina.getSelectedItem().toString());
-            duvida.put("interessado",this.interessado.getSelectedItem().toString());
-            duvida.put("token",preferences.getString("token", ""));
-            duvida.put("duvida_id",this.duvida.getId());
-            requests.post("duvidas/editar",duvida,this,this);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if(!this.titulo.getText().equals("") || !this.conteudo.equals("")) {
+            try {
+                duvida.put("titulo",this.titulo.getText());
+                duvida.put("conteudo",this.conteudo.getText());
+                duvida.put("assunto",this.assunto.getSelectedItem().toString());
+                duvida.put("disciplina",this.disciplina.getSelectedItem().toString());
+                duvida.put("interessado",this.interessado.getSelectedItem().toString());
+                duvida.put("token",preferences.getString("token", ""));
+                duvida.put("duvida_id",this.duvida.getId());
+                requests.post("duvidas/editar",duvida,this,this);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(getActivity(),getString(R.string.erroD),Toast.LENGTH_LONG).show();
         }
     }
 

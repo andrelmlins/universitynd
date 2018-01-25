@@ -1,9 +1,11 @@
 package br.ufrpe.universitynd.fragments;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -81,15 +83,18 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
 
         if(!this.duvida.getUsuario().getToken().equals(preferences.getString("token",""))){
             menu.findItem(R.id.edit).setVisible(false);
+            menu.findItem(R.id.delete).setVisible(false);
             menu.findItem(R.id.like).setVisible(true);
         } else {
             menu.findItem(R.id.edit).setVisible(true);
+            menu.findItem(R.id.delete).setVisible(true);
             menu.findItem(R.id.like).setVisible(false);
         }
         super.onPrepareOptionsMenu(menu);
 
         menu.findItem(R.id.edit).setOnMenuItemClickListener(this);
         menu.findItem(R.id.like).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.delete).setOnMenuItemClickListener(this);
         this.menu = menu;
         super.onPrepareOptionsMenu(menu);
     }
@@ -247,7 +252,38 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 e.printStackTrace();
             }
             return true;
-        }else {
+        } else if(item.getItemId()==R.id.delete) {
+            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            alertDialog.setMessage("Tem certeza que deseja deletar está dúvida?");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(final DialogInterface dialog, int which) {
+                            JSONObject post = new JSONObject();
+                            SharedPreferences preferences = getActivity().getSharedPreferences("usuario", 0);
+                            try {
+                                post.put("token", preferences.getString("token", ""));
+                                post.put("duvida_id", duvida.getId());
+                                requests.post("duvidas/deletar", post, new Response.Listener<JSONObject>() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidasFragment()).addToBackStack("").commit();
+                                        dialog.dismiss();
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(getActivity(), R.string.erroC, Toast.LENGTH_SHORT).show();
+                                        dialog.dismiss();
+                                    }
+                                });
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            alertDialog.show();
+            return true;
+        } else {
             return false;
         }
     }

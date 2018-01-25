@@ -55,6 +55,7 @@
 
 
     <string name="erroC">Conection fail  :)</string>
+    <string name="erroD">Fill in all the fields! :)</string>
     <string name="carregandoD">Load Questions...</string>
     <string name="carregandoP">Load profile...</string>
     <string name="carregandoR">Load ranking...</string>
@@ -64,13 +65,15 @@
     <string name="resp">Answers:</string>
 
 
-    <!--<string-array name="Categorias">-->
-        <!--<item>Exemption from Discipline</item>-->
-        <!--<item>Intership</item>-->
-        <!--<item>Registration</item>-->
-        <!--<item>SECOMP</item>-->
-        <!--<item>Discipline</item>-->
-    <!--</string-array>-->
+    <string-array name="Categorias">
+        <item>Exemption from Discipline</item>
+        <item>Intership</item>
+        <item>Registration</item>
+        <item>SECOMP</item>
+        <item>Discipline</item>
+        <item>Workload</item>
+        <item>Others</item>
+    </string-array>
     <!--<string-array name="TipoUsuario">-->
         <!--<item>Student</item>-->
         <!--<item>Department</item>-->
