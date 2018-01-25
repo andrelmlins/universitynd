@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import java.util.Locale;
 import br.ufrpe.universitynd.Interface.RecyclerViewOnClickListenerHack;
 import br.ufrpe.universitynd.R;
 import br.ufrpe.universitynd.models.Duvida;
+import br.ufrpe.universitynd.utils.Requests;
 
 /**
  * Created by air on 22/11/17.
@@ -45,6 +48,7 @@ public class AdapterDuvidas extends RecyclerView.Adapter<AdapterDuvidas.MyViewHo
     }
 
     public void reload(){
+        this.arraylist = new ArrayList<Duvida>();
         this.arraylist.addAll(this.mDuvidas);
     }
 

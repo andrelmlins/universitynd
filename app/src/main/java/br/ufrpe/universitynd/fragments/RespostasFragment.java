@@ -73,7 +73,7 @@ public class RespostasFragment extends Fragment implements Response.ErrorListene
         this.requests = Requests.getInstance(getActivity());
 
         this.respostas = new ArrayList<>();
-        this.adapter = new AdapterRespostas(getActivity(),this.respostas);
+        this.adapter = new AdapterRespostas(getActivity(),this.respostas,this.duvida);
         this.myRecyclerView = (RecyclerView) this.rootView.findViewById(R.id.listaDuvidas);
         this.myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager lls = new LinearLayoutManager(getActivity());
@@ -100,7 +100,7 @@ public class RespostasFragment extends Fragment implements Response.ErrorListene
             JSONObject jsonResposta;
             for(int i = 0; i< arrayRespostas.length(); i++){
                 jsonResposta = arrayRespostas.getJSONObject(i);
-                this.respostas.add(new Resposta(jsonResposta.getString("conteudo"),new Usuario(jsonResposta.getString("username"),jsonResposta.getString("userimage"),"")));
+                this.respostas.add(new Resposta(jsonResposta.getString("conteudo"),new Usuario(jsonResposta.getString("username"),jsonResposta.getString("userimage"),jsonResposta.getString("usertoken")),jsonResposta.getString("id")));
             }
             if(response.getString("from")!="null") {
                 this.adapter.reload();

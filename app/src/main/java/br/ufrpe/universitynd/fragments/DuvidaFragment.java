@@ -266,7 +266,7 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                                 requests.post("duvidas/deletar", post, new Response.Listener<JSONObject>() {
                                     @Override
                                     public void onResponse(JSONObject response) {
-                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new DuvidasFragment()).addToBackStack("").commit();
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, new MinhasDuvidasFragment()).addToBackStack("").commit();
                                         dialog.dismiss();
                                     }
                                 }, new Response.ErrorListener() {
@@ -314,10 +314,10 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
             JSONObject jsonResposta;
             for(int i = 0; i< arrayRespostas.length(); i++){
                 jsonResposta = arrayRespostas.getJSONObject(i);
-                this.respostas.add(new Resposta(jsonResposta.getString("conteudo"),new Usuario(jsonResposta.getString("username"),jsonResposta.getString("userimage"),"")));
+                this.respostas.add(new Resposta(jsonResposta.getString("conteudo"),new Usuario(jsonResposta.getString("username"),jsonResposta.getString("userimage"),jsonResposta.getString("usertoken")),jsonResposta.getString("id")));
             }
 
-            this.adapter = new AdapterRespostas(getActivity(), this.respostas);
+            this.adapter = new AdapterRespostas(getActivity(), this.respostas,duvida);
             this.myRecyclerView.setAdapter(this.adapter);
             this.adapter.notifyDataSetChanged();
 
@@ -343,8 +343,8 @@ public class DuvidaFragment extends Fragment implements View.OnClickListener, Me
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
-                        respostas.add(new Resposta(response.getString("conteudo"),new Usuario(response.getString("username"),response.getString("userimage"),"")));
-                        adapter = new AdapterRespostas(getActivity(), respostas);
+                        respostas.add(new Resposta(response.getString("conteudo"),new Usuario(response.getString("username"),response.getString("userimage"),response.getString("usertoken")),response.getString("id")));
+                        adapter = new AdapterRespostas(getActivity(), respostas,duvida);
                         myRecyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                         if(progress!=null) progress.dismiss();

@@ -9,10 +9,12 @@ import java.io.Serializable;
 public class Resposta implements Serializable {
     private String conteudo;
     private Usuario usuario;
+    private String id;
 
-    public Resposta(String conteudo, Usuario usuario) {
+    public Resposta(String conteudo, Usuario usuario, String id) {
         this.conteudo = conteudo;
         this.usuario = usuario;
+        this.id = id;
     }
 
     public String getConteudo() {
@@ -29,5 +31,13 @@ public class Resposta implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

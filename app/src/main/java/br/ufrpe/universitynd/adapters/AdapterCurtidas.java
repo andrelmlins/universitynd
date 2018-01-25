@@ -44,6 +44,7 @@ public class AdapterCurtidas extends RecyclerView.Adapter<AdapterCurtidas.MyView
     }
 
     public void reload(){
+        this.arraylist = new ArrayList<Curtir>();
         this.arraylist.addAll(this.curtidas);
     }
 
