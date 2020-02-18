@@ -1,1 +1,3 @@
-# universitynd
+# UniversityNd
+
+Um aplicativo colaborativo para os estudantes universitários, tendo a ideologia de um fórum onde os estudantes trarão dúvidas e questionamentos em nível da coordenação e secretária, como também questionamentos sobre disciplinas. Além disso, a coordenação, professores e o diretório acadêmico poderão trazer avisos através de notificações.  O aplicativo terá visões de usuário como: Coordenação, Professores, Diretório Acadêmico e Alunos.  Os questionamentos terão tags, etiquetas e telas de busca para facilitar a identificação do interesse do usuário. Como base inicial será planejado para o curso BCC, utilizando as perguntas que contém no site do curso.
